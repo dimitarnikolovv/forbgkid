@@ -1,18 +1,19 @@
 <script context="module">
     import { browser } from '$app/env';
-
     // ...but if the client-side router is already loaded
     // (i.e. we came here from elsewhere in the app), use it
     export const router = browser;
+</script>
 
-    // since there's no dynamic data here, we can prerender
-    // it so that it gets served as a static asset in prod
-    export const prerender = true;
+<script>
+    import Main from '../components/Main.svelte';
 </script>
 
 <svelte:head>
-    <title>За нас</title>
+    <title>Контакти</title>
 </svelte:head>
 
-<style>
+<Main />
+
+<style lang="scss">
 </style>
