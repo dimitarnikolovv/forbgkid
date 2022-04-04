@@ -132,7 +132,7 @@ const Logo = (0, import_index_3be38542.c)(($$result, $$props, $$bindings, slots)
   if ($$props.onScroll === void 0 && $$bindings.onScroll && onScroll !== void 0)
     $$bindings.onScroll(onScroll);
   $$result.css.add(css$2);
-  return `<a href="${"https://www.kids.infrablu.xyz"}" target="${"blank"}" class="${["svelte-1mj2ase", onScroll ? "small" : ""].join(" ").trim()}"><img src="${"../../../static/images/forbgkids-logo-only.png"}" alt="${"Tree with leaves of kid's hands"}" class="${"svelte-1mj2ase"}">
+  return `<a href="${"https://www.kids.infrablu.xyz"}" target="${"blank"}" class="${["svelte-1mj2ase", onScroll ? "small" : ""].join(" ").trim()}"><img src="${"/images/forbgkids-logo-only.png"}" alt="${"Tree with leaves of kid's hands"}" class="${"svelte-1mj2ase"}">
 </a>`;
 });
 var Header_svelte_svelte_type_style_lang = "";
