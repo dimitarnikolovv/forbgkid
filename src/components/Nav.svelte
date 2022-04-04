@@ -32,9 +32,35 @@
                         </div>
                     </li>
                     <li>
-                        <a href="/about" class:active={isActive('/about')}>Статистики</a>
+                        <a href="/about" class:active={isActive('/about')}>Как помагаме</a>
                         <div class="arrow">
                             <Arrow active={isActive('/about')} directional={true} />
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/projects" class:active={isActive('/projects')}>Проекти</a>
+                        <div class="arrow">
+                            <Arrow active={isActive('/projects')} directional={true} />
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/centre" class:active={isActive('/centre')}
+                            >Център за млади таланти</a
+                        >
+                        <div class="arrow">
+                            <Arrow active={isActive('/centre')} directional={true} />
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/kids" class:active={isActive('/kids')}>Нашите деца</a>
+                        <div class="arrow">
+                            <Arrow active={isActive('/kids')} directional={true} />
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/donate" class:active={isActive('/donate')}>Дарение</a>
+                        <div class="arrow">
+                            <Arrow active={isActive('/donate')} directional={true} />
                         </div>
                     </li>
                     <li>
@@ -55,9 +81,33 @@
             </div>
         </li>
         <li>
-            <a href="/about" class:active={isActive('/about')}>Статистики</a>
+            <a href="/about" class:active={isActive('/about')}>Как помагаме</a>
             <div class="arrow">
                 <Arrow active={isActive('/about')} directional={true} />
+            </div>
+        </li>
+        <li>
+            <a href="/projects" class:active={isActive('/projects')}>Проекти</a>
+            <div class="arrow">
+                <Arrow active={isActive('/projects')} directional={true} />
+            </div>
+        </li>
+        <li>
+            <a href="/centre" class:active={isActive('/centre')}>Център за млади таланти</a>
+            <div class="arrow">
+                <Arrow active={isActive('/centre')} directional={true} />
+            </div>
+        </li>
+        <li>
+            <a href="/kids" class:active={isActive('/kids')}>Нашите деца</a>
+            <div class="arrow">
+                <Arrow active={isActive('/kids')} directional={true} />
+            </div>
+        </li>
+        <li>
+            <a href="/donate" class:active={isActive('/donate')}>Дарение</a>
+            <div class="arrow">
+                <Arrow active={isActive('/donate')} directional={true} />
             </div>
         </li>
         <li>
@@ -70,7 +120,7 @@
 </nav>
 
 <style lang="scss">
-    :global(a.active) {
+    a.active {
         color: white;
     }
 
@@ -97,13 +147,27 @@
         a {
             text-transform: uppercase;
             font-weight: 600;
-            font-size: large;
+            font-size: small;
             padding-inline-start: 0.4rem;
             transition: color 200ms ease-in-out;
+
+            @media only screen and (min-width: 1470px) {
+                font-size: medium;
+            }
 
             &:hover {
                 & + div {
                     transform: translateX(5px);
+                }
+            }
+        }
+
+        div.arrow {
+            :global(svg) {
+                transform: scale(0.9);
+
+                @media only screen and (min-width: 1470px) {
+                    transform: scale(1);
                 }
             }
         }
@@ -117,7 +181,7 @@
         }
 
         &.main-nav {
-            @media only screen and (max-width: 681px) {
+            @media only screen and (max-width: 1221px) {
                 display: none;
             }
         }
@@ -185,7 +249,7 @@
             top: 6.9rem;
             left: -5.5%;
             width: 100vw;
-            height: 30vh;
+            height: 80vh;
             background-color: rgba(0, 0, 0, 0.75);
             transition: transform 200ms ease-in-out;
 
@@ -194,7 +258,7 @@
             }
         }
 
-        @media only screen and (min-width: 680px) {
+        @media only screen and (min-width: 1220px) {
             display: none;
         }
     }
