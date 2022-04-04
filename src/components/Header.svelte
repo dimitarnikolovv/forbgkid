@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import Nav from './Nav.svelte';
-    import F80Logo from './icons/F80Logo.svelte';
+    import Logo from './icons/Logo.svelte';
 
     let onScroll = false;
     function handleOnScroll() {
@@ -15,9 +15,9 @@
     });
 </script>
 
-<header id="app-head" class={onScroll ? 'fixed' : ''}>
+<header id="app-head" class:fixed={onScroll}>
     <div class="container">
-        <F80Logo />
+        <Logo onScroll={onScroll ? true : false} />
         <Nav onScroll={onScroll ? true : false} />
     </div>
 </header>
@@ -38,16 +38,13 @@
         }
     }
 
-    header:global(.fixed) {
+    header.fixed {
         z-index: 10;
         position: fixed;
         background-color: rgba(0, 0, 0, 0.75);
         animation: headerSlideDown 200ms ease-in-out;
         .container {
             height: 2rem;
-            :global(svg.logo) {
-                height: 2.5rem;
-            }
         }
     }
 
