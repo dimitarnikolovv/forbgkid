@@ -1,15 +1,10 @@
 <script>
     export let clr = 'white';
     export let cp = '';
-    export let mediaSmall = false;
 </script>
 
 <section>
-    <div
-        id={mediaSmall ? 'mediaSmall' : ''}
-        class="background"
-        style="background: {clr}; clip-path: {cp};"
-    />
+    <div class="background" style="background: {clr}; clip-path: {cp};" />
     <div class="container {clr === 'white' ? 'text-dark' : 'text-light'}">
         <slot />
     </div>
@@ -21,22 +16,13 @@
         justify-content: center;
         position: relative;
         width: 100vw;
-        height: 120vh;
-
-        :global(#mediaSmall) {
-            @media only screen and (max-width: 350px) {
-                height: 80vh;
-            }
-            @media only screen and (max-width: 450px) {
-                height: 90vh;
-            }
-        }
+        min-height: 100vh;
     }
 
     div.background {
         z-index: 0;
         width: 100vw;
-        height: 120vh;
+        height: 100%;
         position: absolute;
     }
 

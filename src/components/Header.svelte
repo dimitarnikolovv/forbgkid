@@ -37,11 +37,10 @@
             margin-inline: auto;
         }
     }
-
     header.fixed {
         z-index: 10;
         position: fixed;
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(0, 0, 0, 0.85);
         animation: headerSlideDown 200ms ease-in-out;
         .container {
             height: 2rem;

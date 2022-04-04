@@ -1,5 +1,4 @@
 <script>
-    import { slide } from 'svelte/transition';
     import ArrowSlide from './icons/ArrowSlide.svelte';
 
     const carouselSlides = [
@@ -14,8 +13,8 @@
             page: '/',
         },
         {
-            link: '/images/literature.png',
-            title: 'VIII национален литературен конкурс на тема "Когато утре стане днес"',
+            link: '/images/talents.jpeg',
+            title: 'Кампания "Шанс за таланта на Бургас"',
             page: '/',
         },
         {
@@ -24,8 +23,8 @@
             page: '/',
         },
         {
-            link: '/images/talents.jpeg',
-            title: 'Кампания "Шанс за таланта на Бургас"',
+            link: '/images/literature.png',
+            title: 'VIII национален литературен конкурс на тема "Когато утре стане днес"',
             page: '/',
         },
     ];
@@ -37,7 +36,7 @@
     <div
         class="faded faded-left"
         on:click={() => {
-            step < 120 ? (step += 60) : '';
+            step < 127 ? (step += 63.5) : '';
         }}
     >
         <ArrowSlide direction="left" />
@@ -45,12 +44,12 @@
     <div
         class="faded faded-right"
         on:click={() => {
-            step > -120 ? (step -= 60) : '';
+            step > -127 ? (step -= 63.5) : '';
         }}
     >
         <ArrowSlide direction="right" />
     </div>
-    <ul id="carousel" style="transform: translate({step}%)">
+    <ul id="carousel" style="transform: translate({step}rem)">
         {#each carouselSlides as slide}
             <li class="carousel--item">
                 <img src={slide.link} alt={slide.title} />

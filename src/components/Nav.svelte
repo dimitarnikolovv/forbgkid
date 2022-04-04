@@ -172,16 +172,8 @@
             }
         }
 
-        &.onScroll {
-            a {
-                text-transform: uppercase;
-                font-weight: 600;
-                font-size: 1rem;
-            }
-        }
-
         &.main-nav {
-            @media only screen and (max-width: 1221px) {
+            @media only screen and (max-width: 1219px) {
                 display: none;
             }
         }
@@ -250,7 +242,7 @@
             left: -5.5%;
             width: 100vw;
             height: 80vh;
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(0, 0, 0, 0.95);
             transition: transform 200ms ease-in-out;
 
             &.onScroll {

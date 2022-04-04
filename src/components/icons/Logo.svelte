@@ -8,11 +8,9 @@
 
 <style lang="scss">
     a {
-        margin-block-start: 0.7rem;
-
+        height: 6rem;
         &.small {
             height: 3rem;
-            margin-block-start: 0;
         }
         img {
             height: 100%;
