@@ -3,16 +3,16 @@
     import Nav from './Nav.svelte';
     import Logo from './icons/Logo.svelte';
 
+    onMount(() => {
+        window.addEventListener('scroll', handleOnScroll);
+    });
+
     let onScroll = false;
     function handleOnScroll() {
         const scroll = window.scrollY;
 
         onScroll = scroll > 180 ? true : false;
     }
-
-    onMount(() => {
-        window.addEventListener('scroll', handleOnScroll);
-    });
 </script>
 
 <header id="app-head" class:fixed={onScroll}>
