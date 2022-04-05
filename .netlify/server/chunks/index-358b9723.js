@@ -18,8 +18,9 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var stdin_exports = {};
 __export(stdin_exports, {
   a: () => subscribe,
-  b: () => add_attribute,
+  b: () => each,
   c: () => create_ssr_component,
+  d: () => add_attribute,
   e: () => escape,
   g: () => getContext,
   m: () => missing_component,
@@ -73,6 +74,13 @@ function escape(html) {
 }
 function escape_attribute_value(value) {
   return typeof value === "string" ? escape(value) : value;
+}
+function each(items, fn) {
+  let str = "";
+  for (let i = 0; i < items.length; i += 1) {
+    str += fn(items[i], i);
+  }
+  return str;
 }
 const missing_component = {
   $$render: () => ""

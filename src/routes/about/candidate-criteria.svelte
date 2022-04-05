@@ -1,0 +1,75 @@
+<script context="module">
+    import { browser } from '$app/env';
+
+    // ...but if the client-side router is already loaded
+    // (i.e. we came here from elsewhere in the app), use it
+    export const router = browser;
+
+    // since there's no dynamic data here, we can prerender
+    // it so that it gets served as a static asset in prod
+    export const prerender = true;
+</script>
+
+<svelte:head>
+    <title>Критерии за подбор на кандидати</title>
+</svelte:head>
+<div>
+    <h1>Кандидати се избират по следните критерии:</h1>
+
+    <ul>
+        <li>
+            <p>
+                Успех - общ и по съответната учебна дисциплина. Удостоверение за успеха от
+                предходната учебна година или учебен срок (при кандидатстване в началото на
+                календарната година) се прилага към формуляра;
+            </p>
+        </li>
+        <li>
+            <p>
+                Предимство при кандидатстване имат кандидатите приложили: удостоверения за постигнат
+                успех, изява, талант (грамоти, отличия за постигнати резултати на олимпиади,
+                състезания, конкурси, рецензии, характеристики и други). Прилагат се при
+                кандидатстване към формуляра;
+            </p>
+        </li>
+        <li>
+            <p>Резултати от входящия тест.</p>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <p>
+        <a
+            rel="external"
+            href="http://www.forbgkids.org/cdir/forbgkids.org/files/Формуляр_за_кандидати_last_17.10.doc"
+            ><span class="text-transform">Формуляр за кандидатстване (MS Word format)</span></a
+        >
+        моля изпращайте формулярите на
+        <a href="mailto:info@forbgkids.org"
+            ><span class="text-transform">info@forbgkids.org</span></a
+        >
+    </p>
+</div>
+
+<style lang="scss">
+    span.text-transform {
+        font-weight: 600;
+    }
+    ul {
+        li {
+            background-image: url('/static/icons/check-mark-24x24.svg');
+            background-repeat: no-repeat;
+            p {
+                margin-inline-start: 32px;
+            }
+        }
+    }
+
+    a {
+        transition: color 200ms ease;
+        &:hover {
+            color: rgba(0, 86, 214, 0.87);
+        }
+    }
+</style>

@@ -20,7 +20,7 @@ __export(stdin_exports, {
   default: () => Kids
 });
 module.exports = __toCommonJS(stdin_exports);
-var import_index_3be38542 = require("../../chunks/index-3be38542.js");
-const Kids = (0, import_index_3be38542.c)(($$result, $$props, $$bindings, slots) => {
-  return ``;
+var import_index_358b9723 = require("../../chunks/index-358b9723.js");
+const Kids = (0, import_index_358b9723.c)(($$result, $$props, $$bindings, slots) => {
+  return `${$$result.head += `${$$result.title = `<title>\u041D\u0430\u0448\u0438\u0442\u0435 \u0434\u0435\u0446\u0430</title>`, ""}`, ""}`;
 });

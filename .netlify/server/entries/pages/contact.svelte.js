@@ -21,12 +21,12 @@ __export(stdin_exports, {
   router: () => router
 });
 module.exports = __toCommonJS(stdin_exports);
-var import_index_3be38542 = require("../../chunks/index-3be38542.js");
+var import_index_358b9723 = require("../../chunks/index-358b9723.js");
 var import_env_838bf73b = require("../../chunks/env-838bf73b.js");
-var import_Main_cd69ef7f = require("../../chunks/Main-cd69ef7f.js");
+var import_Main_06dbf238 = require("../../chunks/Main-06dbf238.js");
 const router = import_env_838bf73b.b;
-const Contact = (0, import_index_3be38542.c)(($$result, $$props, $$bindings, slots) => {
+const Contact = (0, import_index_358b9723.c)(($$result, $$props, $$bindings, slots) => {
   return `${$$result.head += `${$$result.title = `<title>\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u0438</title>`, ""}`, ""}
 
-${(0, import_index_3be38542.v)(import_Main_cd69ef7f.M, "Main").$$render($$result, {}, {}, {})}`;
+${(0, import_index_358b9723.v)(import_Main_06dbf238.M, "Main").$$render($$result, {}, {}, {})}`;
 });

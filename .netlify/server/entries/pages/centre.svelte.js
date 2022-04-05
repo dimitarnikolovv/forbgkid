@@ -20,7 +20,7 @@ __export(stdin_exports, {
   default: () => Centre
 });
 module.exports = __toCommonJS(stdin_exports);
-var import_index_3be38542 = require("../../chunks/index-3be38542.js");
-const Centre = (0, import_index_3be38542.c)(($$result, $$props, $$bindings, slots) => {
-  return ``;
+var import_index_358b9723 = require("../../chunks/index-358b9723.js");
+const Centre = (0, import_index_358b9723.c)(($$result, $$props, $$bindings, slots) => {
+  return `${$$result.head += `${$$result.title = `<title>\u0426\u0435\u043D\u0442\u044A\u0440 \u0437\u0430 \u043C\u043B\u0430\u0434\u0438 \u0442\u0430\u043B\u0430\u043D\u0442\u0438</title>`, ""}`, ""}`;
 });

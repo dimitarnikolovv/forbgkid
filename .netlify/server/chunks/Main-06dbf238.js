@@ -17,13 +17,10 @@ var __copyProps = (to, from, except, desc) => {
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var stdin_exports = {};
 __export(stdin_exports, {
-  default: () => About,
-  router: () => router
+  M: () => Main
 });
 module.exports = __toCommonJS(stdin_exports);
-var import_index_3be38542 = require("../../chunks/index-3be38542.js");
-var import_env_838bf73b = require("../../chunks/env-838bf73b.js");
-const router = import_env_838bf73b.b;
-const About = (0, import_index_3be38542.c)(($$result, $$props, $$bindings, slots) => {
-  return `${$$result.head += `${$$result.title = `<title>\u0417\u0430 \u043D\u0430\u0441</title>`, ""}`, ""}`;
+var import_index_358b9723 = require("./index-358b9723.js");
+const Main = (0, import_index_358b9723.c)(($$result, $$props, $$bindings, slots) => {
+  return `<main>${slots.default ? slots.default({}) : ``}</main>`;
 });
