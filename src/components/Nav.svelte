@@ -181,8 +181,9 @@
         &.mobile-nav {
             flex-direction: column;
             gap: 0;
+            width: 100vw;
             li {
-                width: 100vw;
+                width: inherit;
                 height: 10vh;
             }
         }
