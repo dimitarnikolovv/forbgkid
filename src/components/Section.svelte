@@ -16,7 +16,7 @@
         justify-content: center;
         position: relative;
         width: 100vw;
-        min-height: 100vh;
+        min-height: 110vh;
     }
 
     div.background {

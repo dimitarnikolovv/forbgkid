@@ -48,34 +48,30 @@
                 <ul>
                     <li>
                         <a href="/">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore,
-                            repellat?
+                            Деца в предучилищна възраст ще премерят сили в IV математически турнир
                         </a>
                     </li>
                     <li>
-                        <a href="/">
-                            A facere nobis dolorum dicta deleniti officiis consectetur autem minima.
-                        </a>
+                        <a href="/"> Дебют: роди се нова младежка медия – "За хвърчащите хора" </a>
                     </li>
                     <li>
                         <a href="/">
-                            Iste nulla, accusamus maxime quo architecto esse blanditiis quas
-                            veritatis.
+                            VII Областна олимпиада по информатика за Бургас и региона ще се проведе
+                            онлайн
                         </a>
                     </li>
                     <li>
-                        <a href="/">
-                            Dolor, error distinctio. Cum exercitationem excepturi cupiditate nihil
-                            explicabo veniam.
-                        </a>
+                        <a href="/"> Стимулират даровити младежи с парични стипендии </a>
                     </li>
                     <li>
                         <a href="/">
-                            Enim laborum praesentium veritatis repellat repellendus temporibus sed
-                            sapiente! Recusandae!
+                            Обучителни кампании на тема "Предотвратяване замърсяването на морето с
+                            пластмаса"
                         </a>
                     </li>
                 </ul>
+
+                <div class="btn"><a href="/news">Покажи всички</a></div>
             </aside>
         </div>
     </Section>
@@ -119,7 +115,8 @@
                     padding: 0.8rem;
 
                     a {
-                        position: relative;
+                        font-style: italic;
+                        font-weight: 300;
                         background-image: linear-gradient(
                             90deg,
                             rgb(139, 138, 138),
@@ -142,8 +139,36 @@
             margin-block: 2rem;
             padding-block: 0.5rem;
             padding-inline: 1rem;
-            background-color: red;
+            border-left: 4px solid black;
+            border-right: 3px solid black;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            border-radius: 40% 60%;
             width: fit-content;
+
+            transition: border-radius 200ms ease;
+
+            a {
+                font-style: italic;
+                background-image: linear-gradient(90deg, rgb(115, 167, 245), rgb(0, 86, 214));
+                background-size: 0% 1px;
+                background-repeat: no-repeat;
+                background-position: left bottom;
+                transition: color 150ms ease, background-size 200ms ease-in-out;
+            }
+
+            &:hover {
+                border-left: 4px solid rgba(0, 86, 214, 0.87);
+                border-right: 3px solid rgba(0, 86, 214, 0.87);
+                border-top: 1px solid rgba(0, 86, 214, 0.87);
+                border-bottom: 1px solid rgba(0, 86, 214, 0.87);
+                border-radius: 35% 65%;
+
+                a {
+                    color: rgba(0, 86, 214, 0.87);
+                    background-size: 100% 1px;
+                }
+            }
         }
     }
 </style>
