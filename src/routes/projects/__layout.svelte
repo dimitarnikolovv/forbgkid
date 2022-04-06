@@ -14,7 +14,7 @@
                 <slot />
             </div>
             <aside>
-                <h1>Още</h1>
+                <h1>Проекти</h1>
                 <nav>
                     <ul>
                         {#each projects as { name, id }}
