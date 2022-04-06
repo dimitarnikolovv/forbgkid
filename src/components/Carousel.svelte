@@ -1,6 +1,7 @@
 <script>
+    import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
+    import '@splidejs/svelte-splide/css';
     import { onMount } from 'svelte';
-
     import ArrowSlide from './icons/ArrowSlide.svelte';
 
     const carouselSlides = [
@@ -32,106 +33,125 @@
     ];
 
     onMount(() => {
-        imgWidth = document.querySelector('.image-wh').clientWidth;
+        const bdyWidth = window.innerWidth;
+        const imgWidth = document.querySelector('.image-wh').clientHeight;
+        // padd = imgWidth * 0.0475;
+        padd = (bdyWidth - imgWidth) * 0.014;
+        options = { ...options, padding: `${padd}%` };
     });
 
-    let imgWidth;
+    let padd;
 
-    let step = 0;
+    let options = {
+        rewind: true,
+        gap: '1rem',
+        autoplay: true,
+        arrows: true,
+        autoHeight: true,
+        autoWidth: true,
+        type: 'loop',
+        trimSpace: false,
+        focus: 3,
+    };
 </script>
 
-<div class="carousel-wrap">
-    <div
-        class="faded faded-left"
-        on:click={() => {
-            step < 2 * imgWidth + 32 ? (step += imgWidth + 16) : '';
-        }}
-    >
-        <ArrowSlide direction="left" />
+<Splide {options} hasTrack={false}>
+    <div style="position: relative">
+        <SplideTrack>
+            {#each carouselSlides as slide}
+                <SplideSlide>
+                    <img class="image-wh" src={slide.link} alt={slide.title} />
+                    <div class="slide-title">
+                        <a href={slide.page}>{slide.title}</a>
+                    </div>
+                </SplideSlide>
+            {/each}
+        </SplideTrack>
+
+        <div class="splide__arrows">
+            <button class="splide__arrow splide__arrow--prev"
+                ><ArrowSlide direction="left" /></button
+            >
+            <button class="splide__arrow splide__arrow--next"
+                ><ArrowSlide direction="right" /></button
+            >
+        </div>
     </div>
-    <div
-        class="faded faded-right"
-        on:click={() => {
-            step > -2 * imgWidth + 32 ? (step -= imgWidth + 16) : '';
-        }}
-    >
-        <ArrowSlide direction="right" />
+
+    <div class="splide__progress">
+        <div class="splide__progress__bar" />
     </div>
-    <ul id="carousel" style="transform: translate({step}px)">
-        {#each carouselSlides as slide}
-            <li class="carousel--item">
-                <img class="image-wh" src={slide.link} alt={slide.title} />
-                <div class="carousel--item-title">
-                    <a href={slide.page}>{slide.title}</a>
-                </div>
-            </li>
-        {/each}
-    </ul>
-</div>
+</Splide>
 
 <style lang="scss">
-    div.carousel-wrap {
-        overflow-x: hidden;
-        position: relative;
+    .slide-title {
         height: fit-content;
-    }
-
-    ul {
         display: flex;
-        justify-content: space-around;
-        gap: 1rem;
-
-        transition: transform 500ms ease;
-
-        .carousel--item {
-            img {
-                @media only screen and (max-width: 1000px) {
-                    width: 40rem;
-                }
-
-                @media only screen and (max-width: 640px) {
-                    width: 28rem;
-                }
-                @media only screen and (max-width: 450px) {
-                    width: 20rem;
-                }
-            }
-
-            &-title {
-                height: fit-content;
-                display: flex;
-                justify-content: center;
-                margin-block-end: 0.5rem;
-                a {
-                    margin-inline: auto;
-                    font-size: large;
-                    color: white;
-                }
-            }
-        }
-    }
-
-    .faded {
-        z-index: 2;
-        position: absolute;
-        display: flex;
-        align-items: center;
         justify-content: center;
-        height: 100%;
-        width: 15%;
-        background: rgb(0, 0, 0);
+        margin-block: 0.5rem;
+        a {
+            margin-inline: auto;
+            font-size: large;
+            color: white;
+        }
+    }
+    .splide__arrow {
+        width: 3rem;
+        height: 3rem;
+        background-color: transparent;
+        opacity: 1;
+        z-index: 3;
+        &::after {
+            content: '';
+            z-index: -1;
+            position: absolute;
+            display: block;
+            top: -290%;
+            height: 680%;
+            width: 1000%;
 
-        @media only screen and (max-width: 1020px) {
-            background: none !important;
+            @media only screen and (max-width: 1020px) {
+                background: none !important;
+            }
         }
 
-        &-left {
-            left: 0;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        &--prev {
+            left: 4rem;
+            &::after {
+                right: -100%;
+                background: linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 1) 30%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+            }
+            @media only screen and (max-width: 620px) {
+                left: 0.8rem;
+            }
         }
-        &-right {
-            right: 0;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        &--next {
+            right: 4rem;
+            &::after {
+                left: -100%;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 70%);
+            }
+            @media only screen and (max-width: 620px) {
+                right: 0.8rem;
+            }
+        }
+    }
+
+    img,
+    a {
+        @media only screen and (max-width: 1000px) {
+            width: 40rem;
+        }
+
+        @media only screen and (max-width: 640px) {
+            width: 28rem;
+        }
+        @media only screen and (max-width: 450px) {
+            width: 20rem;
         }
     }
 </style>
