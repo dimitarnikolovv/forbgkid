@@ -1,6 +1,16 @@
+<script context="module">
+    import { browser } from '$app/env';
+    // ...but if the client-side router is already loaded
+    // (i.e. we came here from elsewhere in the app), use it
+    export const router = browser;
+</script>
+
 <script>
     import Main from '/src/components/Main.svelte';
     import Section from '/src/components/Section.svelte';
+    import { page } from '$app/stores';
+
+    $: pathEnd = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
 </script>
 
 <Main>
@@ -13,11 +23,22 @@
                 <h1>Още</h1>
                 <nav>
                     <ul>
-                        <li><a href="/about">Как помагаме</a></li>
-                        <li><a href="/about/mission">Мисия</a></li>
-                        <li><a href="/about/purpose">Цели и дейности</a></li>
                         <li>
-                            <a href="/about/candidate-criteria">Критерии за подбор на кандидати</a>
+                            <a class:active={pathEnd === 'about'} href="/about">Как помагаме</a>
+                        </li>
+                        <li>
+                            <a class:active={pathEnd === 'mission'} href="/about/mission">Мисия</a>
+                        </li>
+                        <li>
+                            <a class:active={pathEnd === 'purpose'} href="/about/purpose"
+                                >Цели и дейности</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class:active={pathEnd === 'candidate-criteria'}
+                                href="/about/candidate-criteria">Критерии за подбор на кандидати</a
+                            >
                         </li>
                     </ul>
                 </nav>
@@ -64,6 +85,10 @@
                     padding: 0.8rem;
 
                     a {
+                        &.active {
+                            font-weight: 500;
+                        }
+
                         font-style: italic;
                         font-weight: 300;
                         background-image: linear-gradient(

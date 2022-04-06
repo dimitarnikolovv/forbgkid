@@ -1,7 +1,10 @@
 <script>
+    import { page } from '$app/stores';
     import projects from './projects.json';
     import Main from '/src/components/Main.svelte';
     import Section from '/src/components/Section.svelte';
+
+    $: projectId = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
 </script>
 
 <Main>
@@ -15,7 +18,9 @@
                 <nav>
                     <ul>
                         {#each projects as { name, id }}
-                            <li><a href="/projects/{id}">{name}</a></li>
+                            <li>
+                                <a class:active={id === projectId} href="/projects/{id}">{name}</a>
+                            </li>
                         {/each}
                     </ul>
                 </nav>
@@ -62,6 +67,10 @@
                     padding: 0.8rem;
 
                     a {
+                        &.active {
+                            font-weight: 500;
+                        }
+
                         font-style: italic;
                         font-weight: 300;
                         background-image: linear-gradient(
@@ -73,7 +82,7 @@
                         background-repeat: no-repeat;
                         background-position: left bottom;
 
-                        transition: background-size 300ms ease-in-out;
+                        transition: background-size 300ms ease-in-out, font-weight 200ms ease;
                     }
                     a:hover {
                         background-size: 100% 2px;
