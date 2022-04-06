@@ -33,7 +33,6 @@
 
     onMount(() => {
         imgWidth = document.querySelector('.image-wh').clientWidth;
-        console.log(imgWidth);
     });
 
     let imgWidth;

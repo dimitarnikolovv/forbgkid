@@ -3,7 +3,7 @@
 
 <script>
     import Main from '../components/Main.svelte';
-    import Carousel from '../components/Carousel.svelte';
+    import Carousel from '../components/Carousel1.svelte';
     import Section from '../components/Section.svelte';
 </script>
 

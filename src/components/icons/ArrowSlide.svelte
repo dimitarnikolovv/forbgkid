@@ -26,7 +26,7 @@
 
     svg {
         height: 3rem;
-        fill: #c4c4c4;
+        fill: white;
 
         transition: fill 200ms ease;
 

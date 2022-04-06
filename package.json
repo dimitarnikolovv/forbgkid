@@ -16,5 +16,8 @@
         "svelte": "^3.46.0",
         "svelte-preprocess": "^4.10.4"
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "@splidejs/svelte-splide": "^0.2.0"
+    }
 }
