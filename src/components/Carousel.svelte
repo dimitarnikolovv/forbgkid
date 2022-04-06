@@ -1,4 +1,6 @@
 <script>
+    import { onMount } from 'svelte';
+
     import ArrowSlide from './icons/ArrowSlide.svelte';
 
     const carouselSlides = [
@@ -29,6 +31,13 @@
         },
     ];
 
+    onMount(() => {
+        imgWidth = document.querySelector('.image-wh').clientWidth;
+        console.log(imgWidth);
+    });
+
+    let imgWidth;
+
     let step = 0;
 </script>
 
@@ -36,7 +45,7 @@
     <div
         class="faded faded-left"
         on:click={() => {
-            step < 127 ? (step += 63.5) : '';
+            step < 2 * imgWidth + 32 ? (step += imgWidth + 16) : '';
         }}
     >
         <ArrowSlide direction="left" />
@@ -44,15 +53,15 @@
     <div
         class="faded faded-right"
         on:click={() => {
-            step > -127 ? (step -= 63.5) : '';
+            step > -2 * imgWidth + 32 ? (step -= imgWidth + 16) : '';
         }}
     >
         <ArrowSlide direction="right" />
     </div>
-    <ul id="carousel" style="transform: translate({step}rem)">
+    <ul id="carousel" style="transform: translate({step}px)">
         {#each carouselSlides as slide}
             <li class="carousel--item">
-                <img src={slide.link} alt={slide.title} />
+                <img class="image-wh" src={slide.link} alt={slide.title} />
                 <div class="carousel--item-title">
                     <a href={slide.page}>{slide.title}</a>
                 </div>
@@ -65,6 +74,7 @@
     div.carousel-wrap {
         overflow-x: hidden;
         position: relative;
+        height: fit-content;
     }
 
     ul {
@@ -75,10 +85,24 @@
         transition: transform 500ms ease;
 
         .carousel--item {
+            img {
+                @media only screen and (max-width: 1000px) {
+                    width: 40rem;
+                }
+
+                @media only screen and (max-width: 640px) {
+                    width: 28rem;
+                }
+                @media only screen and (max-width: 450px) {
+                    width: 20rem;
+                }
+            }
+
             &-title {
-                height: 2rem;
+                height: fit-content;
                 display: flex;
                 justify-content: center;
+                margin-block-end: 0.5rem;
                 a {
                     margin-inline: auto;
                     font-size: large;
