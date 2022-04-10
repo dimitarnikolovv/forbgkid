@@ -94,23 +94,29 @@
         height: 3rem;
         background-color: transparent;
         opacity: 1;
-        z-index: 3;
         &--prev {
             left: 4rem;
-            @media only screen and (max-width: 620px) {
-                left: 0.8rem;
+            @media only screen and (max-width: 860px) {
+                left: 0.6rem;
+            }
+
+            @media only screen and (max-width: 430px) {
+                left: -0.6rem;
             }
         }
         &--next {
             right: 4rem;
-            @media only screen and (max-width: 620px) {
-                right: 0.8rem;
+            @media only screen and (max-width: 860px) {
+                right: 0.6rem;
+            }
+
+            @media only screen and (max-width: 430px) {
+                right: -0.6rem;
             }
         }
     }
 
     .background {
-        z-index: 2;
         height: 100%;
         width: 15%;
         position: absolute;

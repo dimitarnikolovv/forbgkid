@@ -234,7 +234,7 @@
             transform: translate(19px, -7px) rotatez(45deg);
         }
         div.nav-container {
-            z-index: 3;
+            z-index: 10;
             position: absolute;
             display: flex;
             justify-content: center;
