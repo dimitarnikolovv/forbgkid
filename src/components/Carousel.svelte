@@ -32,17 +32,7 @@
         },
     ];
 
-    onMount(() => {
-        const bdyWidth = window.innerWidth;
-        const imgWidth = document.querySelector('.image-wh').clientHeight;
-        // padd = imgWidth * 0.0475;
-        padd = (bdyWidth - imgWidth) * 0.014;
-        options = { ...options, padding: `${padd}%` };
-    });
-
-    let padd;
-
-    let options = {
+    const options = {
         rewind: true,
         gap: '1rem',
         autoplay: true,
@@ -50,8 +40,10 @@
         autoHeight: true,
         autoWidth: true,
         type: 'loop',
-        trimSpace: false,
-        focus: 3,
+        perPage: 3,
+        perMove: 1,
+        pagination: false,
+        focus: 'center',
     };
 </script>
 
@@ -69,12 +61,14 @@
         </SplideTrack>
 
         <div class="splide__arrows">
-            <button class="splide__arrow splide__arrow--prev"
-                ><ArrowSlide direction="left" /></button
-            >
-            <button class="splide__arrow splide__arrow--next"
-                ><ArrowSlide direction="right" /></button
-            >
+            <button class="splide__arrow splide__arrow--prev">
+                <ArrowSlide direction="left" />
+            </button>
+            <button class="splide__arrow splide__arrow--next">
+                <ArrowSlide direction="right" />
+            </button>
+            <div class="background background--left" />
+            <div class="background background--right" />
         </div>
     </div>
 
@@ -101,43 +95,38 @@
         background-color: transparent;
         opacity: 1;
         z-index: 3;
-        &::after {
-            content: '';
-            z-index: -1;
-            position: absolute;
-            display: block;
-            top: -290%;
-            height: 680%;
-            width: 1000%;
-
-            @media only screen and (max-width: 1020px) {
-                background: none !important;
-            }
-        }
-
         &--prev {
             left: 4rem;
-            &::after {
-                right: -100%;
-                background: linear-gradient(
-                    90deg,
-                    rgba(0, 0, 0, 1) 30%,
-                    rgba(255, 255, 255, 0) 100%
-                );
-            }
             @media only screen and (max-width: 620px) {
                 left: 0.8rem;
             }
         }
         &--next {
             right: 4rem;
-            &::after {
-                left: -100%;
-                background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 70%);
-            }
             @media only screen and (max-width: 620px) {
                 right: 0.8rem;
             }
+        }
+    }
+
+    .background {
+        z-index: 2;
+        height: 100%;
+        width: 15%;
+        position: absolute;
+        top: 0;
+        @media only screen and (max-width: 1020px) {
+            background: none !important;
+        }
+
+        &--left {
+            left: 0;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        &--right {
+            right: 0;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
         }
     }
 
