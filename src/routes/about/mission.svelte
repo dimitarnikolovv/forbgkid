@@ -10,10 +10,14 @@
     export const prerender = true;
 </script>
 
+<script>
+    import { slide } from 'svelte/transition';
+</script>
+
 <svelte:head>
     <title>Нашата мисия</title>
 </svelte:head>
-<div>
+<div in:slide={{ duration: 200, delay: 300 }} out:slide={{ duration: 200 }}>
     <h1>Нашата мисия</h1>
     <p>
         Фондация "Шанс за децата и природата на България", член на European Council of High Ability

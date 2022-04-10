@@ -1,7 +1,6 @@
 <script>
     import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
     import '@splidejs/svelte-splide/css';
-    import { onMount } from 'svelte';
     import ArrowSlide from './icons/ArrowSlide.svelte';
 
     const carouselSlides = [

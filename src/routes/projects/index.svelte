@@ -1,11 +1,12 @@
 <script>
+    import { fly } from 'svelte/transition';
 </script>
 
 <svelte:head>
     <title>Проекти</title>
 </svelte:head>
 
-<div>
+<div in:fly={{ x: 100, duration: 200, delay: 300 }} out:fly={{ x: -400, duration: 200 }}>
     <h1>Lorem ipsum dolor sit amet.</h1>
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nostrum voluptatem et dolor
