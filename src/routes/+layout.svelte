@@ -1,14 +1,28 @@
 <script>
+    import { scrollY } from '../stores';
     import Header from '../components/Header.svelte';
     import Footer from '../components/Footer.svelte';
     import '../app.css';
+
+    let mainWrap;
 </script>
 
-<Header />
+<div
+    bind:this={mainWrap}
+    on:scroll={() => {
+        $scrollY = mainWrap.scrollTop;
+    }}
+>
+    <Header />
 
-<slot />
+    <slot />
 
-<Footer />
+    <Footer />
+</div>
 
 <style>
+    div {
+        max-height: 100vh;
+        overflow: hidden scroll;
+    }
 </style>

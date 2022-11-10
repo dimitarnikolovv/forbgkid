@@ -44,14 +44,6 @@
                         </div>
                     </li>
                     <li>
-                        <a href="/centre" class:active={isActive('/centre')}
-                            >Център за млади таланти</a
-                        >
-                        <div class="arrow">
-                            <Arrow active={isActive('/centre')} directional={true} />
-                        </div>
-                    </li>
-                    <li>
                         <a href="/kids" class:active={isActive('/kids')}>Нашите деца</a>
                         <div class="arrow">
                             <Arrow active={isActive('/kids')} directional={true} />
@@ -90,12 +82,6 @@
             <a href="/projects" class:active={isActive('/projects')}>Проекти</a>
             <div class="arrow">
                 <Arrow active={isActive('/projects')} directional={true} />
-            </div>
-        </li>
-        <li>
-            <a href="/centre" class:active={isActive('/centre')}>Център за млади таланти</a>
-            <div class="arrow">
-                <Arrow active={isActive('/centre')} directional={true} />
             </div>
         </li>
         <li>
@@ -243,11 +229,11 @@
             left: -5.5%;
             width: 100vw;
             height: 80vh;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.85);
             transition: transform 200ms ease-in-out;
 
             &.onScroll {
-                transform: translateY(-3.9rem);
+                transform: translateY(-3.91rem);
             }
         }
 
