@@ -1,10 +1,3 @@
-<script context="module">
-    import { browser } from '$app/env';
-    // ...but if the client-side router is already loaded
-    // (i.e. we came here from elsewhere in the app), use it
-    export const router = browser;
-</script>
-
 <script>
     import Main from '/src/components/Main.svelte';
     import Section from '/src/components/Section.svelte';

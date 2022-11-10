@@ -1,6 +1,3 @@
-<script context="module">
-</script>
-
 <script>
     import Main from '../components/Main.svelte';
     import Carousel from '../components/Carousel.svelte';

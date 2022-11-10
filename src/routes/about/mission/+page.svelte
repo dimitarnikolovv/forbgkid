@@ -1,15 +1,3 @@
-<script context="module">
-    import { browser } from '$app/env';
-
-    // ...but if the client-side router is already loaded
-    // (i.e. we came here from elsewhere in the app), use it
-    export const router = browser;
-
-    // since there's no dynamic data here, we can prerender
-    // it so that it gets served as a static asset in prod
-    export const prerender = true;
-</script>
-
 <script>
     import { slide } from 'svelte/transition';
 </script>
@@ -78,7 +66,7 @@
 <style lang="scss">
     ul {
         li {
-            background-image: url('/static/icons/check-mark-24x24.svg');
+            background-image: url('/icons/check-mark-24x24.svg');
             background-repeat: no-repeat;
             p {
                 margin-inline-start: 32px;

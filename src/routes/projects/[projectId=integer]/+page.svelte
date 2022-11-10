@@ -1,5 +1,5 @@
 <script>
-    import projects from './projects.json';
+    import projects from '../projects.json';
     import { page } from '$app/stores';
     import Project from '/src/components/Project.svelte';
 
