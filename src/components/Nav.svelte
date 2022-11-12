@@ -225,16 +225,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            top: 6.9rem;
-            left: -5.5%;
+            top: 100%;
+            left: 0;
             width: 100vw;
             height: 80vh;
             background-color: rgba(0, 0, 0, 0.85);
             transition: transform 200ms ease-in-out;
-
-            &.onScroll {
-                transform: translateY(-3.91rem);
-            }
         }
 
         @media only screen and (min-width: 1220px) {

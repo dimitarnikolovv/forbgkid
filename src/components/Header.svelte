@@ -3,7 +3,7 @@
     import Nav from './Nav.svelte';
     import Logo from './icons/Logo.svelte';
 
-    $: onScroll = $scrollY > 180;
+    $: onScroll = $scrollY >= 100;
 </script>
 
 <header id="app-head" class:fixed={onScroll}>
@@ -22,14 +22,12 @@
         padding-block: 1rem;
         background-color: rgba(0, 0, 0, 0.85);
         div.container {
-            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 6rem;
-            max-width: 90vw;
+            max-width: 90%;
             margin-inline: auto;
-            transition: height 200ms;
         }
     }
     header.fixed {
