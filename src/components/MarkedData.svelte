@@ -4,7 +4,7 @@
         title: '',
         content: '',
         date: '',
-        media: { data: true },
+        media: { data: false },
     };
 </script>
 

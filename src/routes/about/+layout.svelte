@@ -1,9 +1,10 @@
 <script>
+    import { page } from '$app/stores';
     import Main from '/src/components/Main.svelte';
     import Section from '/src/components/Section.svelte';
-    import { page } from '$app/stores';
 
-    $: pathEnd = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
+    $: currentPage = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
+    export let data;
 </script>
 
 <Main>
@@ -17,22 +18,16 @@
                 <nav>
                     <ul>
                         <li>
-                            <a class:active={pathEnd === 'about'} href="/about">Как помагаме</a>
+                            <a class:active={currentPage === 'about'} href="/about">Как помагаме</a>
                         </li>
-                        <li>
-                            <a class:active={pathEnd === 'mission'} href="/about/mission">Мисия</a>
-                        </li>
-                        <li>
-                            <a class:active={pathEnd === 'purpose'} href="/about/purpose"
-                                >Цели и дейности</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                class:active={pathEnd === 'candidate-criteria'}
-                                href="/about/candidate-criteria">Критерии за подбор на кандидати</a
-                            >
-                        </li>
+                        {#each data.about.subpage as subpage}
+                            <li>
+                                <a
+                                    class:active={currentPage === subpage.slug}
+                                    href="/about/{subpage.slug}">{subpage.title}</a
+                                >
+                            </li>
+                        {/each}
                     </ul>
                 </nav>
             </aside>
