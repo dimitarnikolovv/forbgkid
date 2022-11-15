@@ -2,17 +2,27 @@
     /** @type {import('./$types').PageData} */
     import Main from '../../components/Main.svelte';
     import Section from '../../components/Section.svelte';
+    import News from '../../components/News.svelte';
 
     export let data;
 </script>
 
 <Main>
     <Section>
-        {#each data.posts as post}
-            <h1><a href={`news/${post.id}`}>{post.attributes.title}</a></h1>
-            <p>
-                {post.attributes.description}
-            </p>
-        {/each}
+        <div class="news-wrapper">
+            {#each data.posts as post}
+                <News data={post} />
+            {/each}
+        </div>
     </Section>
 </Main>
+
+<style lang="scss">
+    div.news-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        padding-inline: 10%;
+    }
+</style>

@@ -659,6 +659,10 @@ template {
     display: none;
 }
 
+strong {
+    font-weight: 600;
+}
+
 p {
     margin-block: 0.8rem;
 }
@@ -675,6 +679,10 @@ body {
     background-color: black;
     overflow-x: hidden;
     line-height: 1.6rem;
+}
+
+h1 {
+    line-height: 2rem;
 }
 
 :root {

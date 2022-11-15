@@ -1,13 +1,13 @@
 <script>
+    import { marked } from 'marked';
+    export let content = '';
     const year = new Date().getFullYear();
 </script>
 
 <footer>
     <div class="container">
         <p>
-            Фондация "Шанс за децата и природата на България" е неправителствена организация за
-            осъществяване на общественополезна дейност. Фондацията е регистрирана на 18.02.2011 г.,
-            вписана в ТР и регистъра на ЮЛНЦ към Агенцията по вписванията с ЕИК 176040614.
+            {@html marked(content)}
         </p>
         <p>
             Designed and Made By <a href="https://www.infrablu.xyz" target="blank"

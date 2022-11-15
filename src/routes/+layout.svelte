@@ -1,28 +1,24 @@
 <script>
     import { scrollY } from '../stores';
     import Header from '../components/Header.svelte';
+    import Main from '../components/Main.svelte';
     import Footer from '../components/Footer.svelte';
     import '../app.css';
 
-    let mainWrap;
+    export let data;
 </script>
 
-<div
-    bind:this={mainWrap}
-    on:scroll={() => {
-        $scrollY = mainWrap.scrollTop;
-    }}
->
-    <Header />
+<svelte:window bind:scrollY={$scrollY} />
 
+<Header />
+<div class="wrap">
     <slot />
 
-    <Footer />
+    <Footer content={data.homepage.footer.content} />
 </div>
 
-<style>
-    div {
-        max-height: 100vh;
-        overflow: hidden scroll;
+<style lang="scss">
+    div.wrap {
+        margin-top: 8rem;
     }
 </style>

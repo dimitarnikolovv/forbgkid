@@ -1,10 +1,11 @@
 <script>
     import { page } from '$app/stores';
-    import projects from './projects.json';
     import Main from '/src/components/Main.svelte';
     import Section from '/src/components/Section.svelte';
 
-    $: projectId = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
+    export let data;
+
+    $: currentPage = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
 </script>
 
 <Main>
@@ -13,18 +14,24 @@
             <div class="content">
                 <slot />
             </div>
-            <aside>
-                <h1>Проекти</h1>
-                <nav>
-                    <ul>
-                        {#each projects as { name, id }}
-                            <li>
-                                <a class:active={id === projectId} href="/projects/{id}">{name}</a>
-                            </li>
-                        {/each}
-                    </ul>
-                </nav>
-            </aside>
+            {#if data.project.attributes.subpage[0]}
+                <aside>
+                    <h1>Още към проекта</h1>
+                    <nav>
+                        <ul>
+                            {#each data.project.attributes.subpage as subpage}
+                                <li>
+                                    <a
+                                        class:active={currentPage === subpage.slug}
+                                        href="/projects/{data.project.id}/{subpage.slug}"
+                                        >{subpage.title}</a
+                                    >
+                                </li>
+                            {/each}
+                        </ul>
+                    </nav>
+                </aside>
+            {/if}
         </div>
     </Section>
 </Main>

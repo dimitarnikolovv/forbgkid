@@ -3,7 +3,7 @@
     import Nav from './Nav.svelte';
     import Logo from './icons/Logo.svelte';
 
-    $: onScroll = $scrollY >= 100;
+    $: onScroll = $scrollY > 100;
 </script>
 
 <header id="app-head" class:fixed={onScroll}>
@@ -15,7 +15,7 @@
 
 <style lang="scss">
     header {
-        position: sticky;
+        position: fixed;
         top: 0;
         z-index: 10;
         width: 100vw;

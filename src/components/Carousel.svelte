@@ -3,33 +3,12 @@
     import '@splidejs/svelte-splide/css';
     import ArrowSlide from './icons/ArrowSlide.svelte';
 
-    const carouselSlides = [
-        {
-            link: '/images/desk.png',
-            title: 'Евродеск вече и в Бургас',
-            page: '/',
-        },
-        {
-            link: '/images/it_2022.jpg',
-            title: 'VII областна олимпиада по информатика',
-            page: '/',
-        },
-        {
-            link: '/images/talents.jpeg',
-            title: 'Кампания "Шанс за таланта на Бургас"',
-            page: '/',
-        },
-        {
-            link: '/images/math_test.jpg',
-            title: 'IV-ти математически турнир за деца от предучилищна възраст "Многознайко"',
-            page: '/',
-        },
-        {
-            link: '/images/literature.png',
-            title: 'VIII национален литературен конкурс на тема "Когато утре стане днес"',
-            page: '/',
-        },
-    ];
+    export let slides = {
+        name: '',
+        url: '',
+        caption: '',
+        alternativeText: '',
+    };
 
     const options = {
         rewind: true,
@@ -49,11 +28,15 @@
 <Splide {options} hasTrack={false}>
     <div style="position: relative">
         <SplideTrack>
-            {#each carouselSlides as slide}
+            {#each slides as slide}
                 <SplideSlide>
-                    <img class="image-wh" src={slide.link} alt={slide.title} />
+                    <img
+                        class="image-wh"
+                        src={slide.attributes.url}
+                        alt={slide.attributes.alternativeText}
+                    />
                     <div class="slide-title">
-                        <a href={slide.page}>{slide.title}</a>
+                        <a href={slide.attributes.name}>{slide.attributes.caption}</a>
                     </div>
                 </SplideSlide>
             {/each}

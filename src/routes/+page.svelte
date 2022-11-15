@@ -1,7 +1,10 @@
 <script>
+    import { marked } from 'marked';
     import Main from '../components/Main.svelte';
     import Carousel from '../components/Carousel.svelte';
     import Section from '../components/Section.svelte';
+
+    export let data;
 </script>
 
 <svelte:head>
@@ -9,33 +12,15 @@
 </svelte:head>
 
 <Main>
-    <Carousel />
+    <Carousel slides={data.homepage.carousel.data} />
     <Section>
         <div class="section-wrap">
             <div class="content">
                 <div>
-                    <h1>Фондация за млади таланти</h1>
-                    <p>
-                        Фондация "Шанс за децата и природата на България” си поставя благородната
-                        задача да подпомага развитието на талантливи деца и способни млади хора на
-                        възраст от 6 до 20 години, осигурявайки им шанс, зависещ изключително от
-                        техните качества и умения, трудолюбие и постоянство, и да спонсорира тяхното
-                        образование, професионално обучение и творческо развитие.
-                    </p>
-                    <p>
-                        <span class="text-modifier">Основната ни цел</span> е да инвестираме в творчески
-                        инициативи за изпреварващо образование и подготовка във всички области на науката,
-                        технологиите и изкуството, свързани с интересите и дарбите на нашите деца
-                    </p>
+                    {@html marked(data.homepage.content)}
                 </div>
                 <div>
-                    <h1>Център за млади таланти</h1>
-                    <p>
-                        Основен проект за Фондация „Шанс за децата и природата на България” за
-                        2011г. е създаването на Център за млади таланти в гр Бургас. От септември
-                        2011 в него се осъществяват творчески проекти на изявени учители с изявени и
-                        талантливи ученици за надграждане над общообразователната им подготовка.
-                    </p>
+                    {@html marked(data.homepage.content2)}
 
                     <div class="btn"><a href="/centre">Още за Центъра</a></div>
                 </div>
@@ -43,29 +28,13 @@
             <aside>
                 <h3>Актуално</h3>
                 <ul>
-                    <li>
-                        <a href="/">
-                            Деца в предучилищна възраст ще премерят сили в IV математически турнир
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/"> Дебют: роди се нова младежка медия – "За хвърчащите хора" </a>
-                    </li>
-                    <li>
-                        <a href="/">
-                            VII Областна олимпиада по информатика за Бургас и региона ще се проведе
-                            онлайн
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/"> Стимулират даровити младежи с парични стипендии </a>
-                    </li>
-                    <li>
-                        <a href="/">
-                            Обучителни кампании на тема "Предотвратяване замърсяването на морето с
-                            пластмаса"
-                        </a>
-                    </li>
+                    {#each data.postsPreview as post}
+                        <li>
+                            <a href="/news/{post.id}">
+                                {@html post.attributes.title}
+                            </a>
+                        </li>
+                    {/each}
                 </ul>
 
                 <div class="btn"><a href="/news">Покажи всички</a></div>
@@ -75,10 +44,6 @@
 </Main>
 
 <style lang="scss">
-    span.text-modifier {
-        font-weight: 600;
-    }
-
     .section-wrap {
         display: flex;
         gap: 1rem;
@@ -114,16 +79,12 @@
                     a {
                         font-style: italic;
                         font-weight: 300;
-                        background-image: linear-gradient(
-                            90deg,
-                            rgb(139, 138, 138),
-                            rgb(65, 65, 65)
-                        );
+                        background-image: linear-gradient(90deg, rgb(32, 32, 32), rgb(65, 65, 65));
                         background-size: 0% 2px;
                         background-repeat: no-repeat;
                         background-position: left bottom;
 
-                        transition: background-size 300ms ease-in-out;
+                        transition: background-size 200ms ease-in-out;
                     }
                     a:hover {
                         background-size: 100% 2px;
