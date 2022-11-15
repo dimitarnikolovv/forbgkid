@@ -1,20 +1,21 @@
 <script>
-    import { fly } from 'svelte/transition';
-
-    export let name = '';
-    export let id = '';
+    export let id;
+    export let title;
+    export let description;
 </script>
 
-<div in:fly={{ x: 100, duration: 200, delay: 300 }} out:fly={{ x: -400, duration: 200 }}>
-    <h1>{name}</h1>
-    <div>
-        <p>Съдържание на проект с ID {id}</p>
-        <slot />
-    </div>
+<div class="wrapper">
+    <h1><a href="projects/{id}">{title}</a></h1>
+    <p>
+        {description}
+    </p>
 </div>
 
 <style lang="scss">
-    h1 {
-        line-height: 1.2em;
+    div.wrapper {
+        box-shadow: 10px 11px 20px 5px rgba(97, 97, 97, 0.15);
+
+        padding-block: 1rem;
+        padding-inline: 2rem;
     }
 </style>

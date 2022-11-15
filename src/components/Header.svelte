@@ -28,6 +28,10 @@
             height: 6rem;
             max-width: 90%;
             margin-inline: auto;
+
+            @media only screen and (max-width: 768px) {
+                height: 2rem;
+            }
         }
     }
     header.fixed {

@@ -59,6 +59,8 @@
         }
 
         aside {
+            position: sticky;
+            top: 10rem;
             width: 100%;
             height: fit-content;
             background-color: wheat;

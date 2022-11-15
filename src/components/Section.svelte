@@ -1,10 +1,8 @@
 <script>
     export let clr = 'white';
-    export let cp = '';
 </script>
 
-<section>
-    <div class="background" style="background: {clr}; clip-path: {cp};" />
+<section style="background-color: {clr};">
     <div class="container {clr === 'white' ? 'text-dark' : 'text-light'}">
         <slot />
     </div>
@@ -14,16 +12,7 @@
     section {
         display: flex;
         justify-content: center;
-        position: relative;
-        // width: 100vw;
         min-height: 110vh;
-    }
-
-    div.background {
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
     }
 
     :global(div.text-light) {

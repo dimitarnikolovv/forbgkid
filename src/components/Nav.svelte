@@ -3,8 +3,6 @@
     import Arrow from './icons/Arrow.svelte';
     import { slide } from 'svelte/transition';
 
-    export let onScroll = false;
-
     $: isActive = function (url) {
         return url === $page.url.pathname ? true : false;
     };
@@ -23,40 +21,52 @@
         <span />
 
         {#if isChecked === true}
-            <div class="nav-container {onScroll ? 'onScroll' : ''}" transition:slide>
+            <div class="nav-container" transition:slide>
                 <ul class="mobile-nav">
                     <li>
-                        <a href="/" class:active={isActive('/')}>Начало</a>
+                        <a href="/" class:active={isActive('/')} on:click={doChecked}>Начало</a>
                         <div class="arrow">
                             <Arrow active={isActive('/')} directional={true} />
                         </div>
                     </li>
                     <li>
-                        <a href="/about" class:active={isActive('/about')}>Как помагаме</a>
+                        <a href="/about" class:active={isActive('/about')} on:click={doChecked}
+                            >Как помагаме</a
+                        >
                         <div class="arrow">
                             <Arrow active={isActive('/about')} directional={true} />
                         </div>
                     </li>
                     <li>
-                        <a href="/projects" class:active={isActive('/projects')}>Проекти</a>
+                        <a
+                            href="/projects"
+                            class:active={isActive('/projects')}
+                            on:click={doChecked}>Проекти</a
+                        >
                         <div class="arrow">
                             <Arrow active={isActive('/projects')} directional={true} />
                         </div>
                     </li>
                     <li>
-                        <a href="/kids" class:active={isActive('/kids')}>Нашите деца</a>
+                        <a href="/kids" class:active={isActive('/kids')} on:click={doChecked}
+                            >Нашите деца</a
+                        >
                         <div class="arrow">
                             <Arrow active={isActive('/kids')} directional={true} />
                         </div>
                     </li>
                     <li>
-                        <a href="/donate" class:active={isActive('/donate')}>Дарение</a>
+                        <a href="/donate" class:active={isActive('/donate')} on:click={doChecked}
+                            >Дарение</a
+                        >
                         <div class="arrow">
                             <Arrow active={isActive('/donate')} directional={true} />
                         </div>
                     </li>
                     <li>
-                        <a href="/contact" class:active={isActive('/contact')}>Контакти</a>
+                        <a href="/contact" class:active={isActive('/contact')} on:click={doChecked}
+                            >Контакти</a
+                        >
                         <div class="arrow">
                             <Arrow active={isActive('/contact')} directional={true} />
                         </div>
@@ -65,7 +75,7 @@
             </div>
         {/if}
     </label>
-    <ul class="main-nav {onScroll ? 'onScroll' : ''}">
+    <ul class="main-nav">
         <li>
             <a href="/" class:active={isActive('/')}>Начало</a>
             <div class="arrow">

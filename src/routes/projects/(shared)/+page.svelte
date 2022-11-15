@@ -1,5 +1,6 @@
 <script>
     import { fly } from 'svelte/transition';
+    import Project from '../../../components/Project.svelte';
     export let data;
 </script>
 
@@ -8,11 +9,22 @@
 </svelte:head>
 
 <div in:fly={{ x: 100, duration: 200, delay: 300 }} out:fly={{ x: -400, duration: 200 }}>
-    <h1>Проекти</h1>
-    {#each data.projects as project}
-        <h1><a href="projects/{project.id}">{project.attributes.title}</a></h1>
-        <p>
-            {project.attributes.description}
-        </p>
-    {/each}
+    <div class="project-wrap">
+        <h1>Проекти</h1>
+        {#each data.projects as project}
+            <Project
+                id={project.id}
+                title={project.attributes.title}
+                description={project.attributes.description}
+            />
+        {/each}
+    </div>
 </div>
+
+<style lang="scss">
+    div.project-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+</style>

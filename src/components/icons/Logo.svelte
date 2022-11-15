@@ -1,17 +1,10 @@
-<script>
-    export let onScroll = false;
-</script>
-
-<a class:small={onScroll} href="https://www.kids.infrablu.xyz" target="blank">
+<a class="small" href="https://www.kids.infrablu.xyz" target="blank">
     <img src="/images/forbgkids-logo-only.png" alt="Tree with leaves of kid's hands" />
 </a>
 
 <style lang="scss">
     a {
-        height: 6rem;
-        &.small {
-            height: 3rem;
-        }
+        height: 100%;
         img {
             height: 100%;
         }

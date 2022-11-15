@@ -56,6 +56,8 @@
         }
 
         aside {
+            position: sticky;
+            top: 10rem;
             z-index: 1;
             width: 30%;
             height: fit-content;
