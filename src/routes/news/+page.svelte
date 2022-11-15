@@ -24,5 +24,9 @@
         gap: 1rem;
 
         padding-inline: 10%;
+
+        @media only screen and (max-width: 1024px) {
+            padding-inline: 0;
+        }
     }
 </style>

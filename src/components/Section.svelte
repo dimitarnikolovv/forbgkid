@@ -39,8 +39,8 @@
         padding-block: 5rem;
         background-color: transparent;
 
-        @media only screen and (max-width: 768px) {
-            padding-block-start: 1rem;
+        @media only screen and (max-width: 968px) {
+            padding: 1rem;
         }
     }
 </style>

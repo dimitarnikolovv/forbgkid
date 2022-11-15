@@ -41,5 +41,24 @@
                 width: 70%;
             }
         }
+
+        @media only screen and (max-width: 850px) {
+            flex-direction: column;
+            padding: 1.5rem;
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            &.image {
+                .image-wrapper {
+                    width: 70%;
+                }
+
+                .content {
+                    width: 100%;
+                }
+            }
+        }
     }
 </style>
