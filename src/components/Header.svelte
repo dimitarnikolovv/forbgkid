@@ -8,8 +8,8 @@
 
 <header id="app-head" class:fixed={onScroll}>
     <div class="container">
-        <Logo {onScroll} />
-        <Nav {onScroll} />
+        <Logo />
+        <Nav />
     </div>
 </header>
 

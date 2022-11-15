@@ -13,7 +13,7 @@
 
 <style lang="scss">
     div.wrapper {
-        box-shadow: 10px 11px 20px 5px rgba(97, 97, 97, 0.15);
+        box-shadow: 10px 11px 20px 10px rgba(97, 97, 97, 0.15);
 
         padding-block: 1rem;
         padding-inline: 2rem;

@@ -22,7 +22,7 @@
         z-index: 1;
         display: flex;
         flex-direction: column;
-        max-width: 95%;
+        width: 95%;
         max-height: 80%;
         padding-block: 5rem;
         background-color: transparent;

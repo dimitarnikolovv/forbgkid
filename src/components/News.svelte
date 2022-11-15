@@ -7,7 +7,7 @@
 <div class="item" class:image={hasImage}>
     {#if hasImage}
         <div class="image-wrapper">
-            <img src={data.attributes.media.data.attributes.formats.small.url} alt="" />
+            <img src={data.attributes.media.data[0].attributes.formats.small.url} alt="" />
         </div>
     {/if}
     <div class="content">

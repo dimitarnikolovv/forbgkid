@@ -1,7 +1,9 @@
 export async function load({ fetch }) {
     const [homepageReq, postsPreviewReq] = await Promise.all([
         fetch('https://forbgkids-cms.herokuapp.com/api/home-page?populate=*'),
-        fetch('https://forbgkids-cms.herokuapp.com/api/posts?%2A&fields=title&fields=description'),
+        fetch(
+            'https://forbgkids-cms.herokuapp.com/api/posts?%2A&fields=title&fields=description&fields=slug'
+        ),
     ]);
 
     if (homepageReq.ok && postsPreviewReq.ok) {

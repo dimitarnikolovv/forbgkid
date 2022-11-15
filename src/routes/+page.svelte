@@ -30,7 +30,7 @@
                 <ul>
                     {#each data.postsPreview as post}
                         <li>
-                            <a href="/news/{post.id}">
+                            <a href="/news/{post.attributes.slug}">
                                 {@html post.attributes.title}
                             </a>
                         </li>

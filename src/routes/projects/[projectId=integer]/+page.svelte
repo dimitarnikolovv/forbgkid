@@ -11,7 +11,8 @@
     markedData={{
         title: data.project.attributes.title,
         content: data.project.attributes.content,
-        media: { data: data.project.attributes.media.data },
+        // media: { data: data.project.attributes.media.data },
+        media: { data: false },
     }}
 />
 

@@ -19,7 +19,8 @@
         markedData={{
             title: subpage.title,
             content: subpage.content,
-            media: { data: subpage.media.data },
+            // media: { data: subpage.media.data },
+            media: { data: false },
         }}
     />
 </div>

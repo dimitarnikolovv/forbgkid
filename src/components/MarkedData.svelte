@@ -13,28 +13,40 @@
     {#if markedData.date} <span>{markedData.date.toLocaleString('bg-BG')}</span> {/if}
 
     <div class="content">
-        {#if markedData.media.data}
-            <img
-                src={markedData.media.data.attributes.url}
-                alt={markedData.media.data.attributes.alternativeText}
-            />
-        {/if}
-
         {@html marked(markedData.content)}
+        {#if markedData.media.data}
+            {#each markedData.media.data as image}
+                <img
+                    class="fullscreen-image"
+                    src={image.attributes.url}
+                    alt={image.attributes.alternativeText}
+                />
+            {/each}
+        {/if}
     </div>
 </div>
 
 <style lang="scss">
     .wrapper {
         max-width: 60rem;
-        img {
-            max-width: 40%;
-            margin-block-end: 1rem;
-            margin-inline-start: 1rem;
-            display: block;
-            float: right;
-            border-radius: 10px;
+
+        .content {
+            img.fullscreen-image {
+                max-width: 100%;
+                margin-block: 1rem;
+                margin-inline: 1rem;
+                float: none;
+            }
         }
+    }
+
+    .wrapper :global(.content img) {
+        max-width: 40%;
+        margin-block-end: 1rem;
+        margin-inline-start: 1rem;
+        display: block;
+        float: right;
+        border-radius: 10px;
     }
 
     .wrapper :global(a) {
