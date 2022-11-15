@@ -1,5 +1,5 @@
 <script>
-    import { marked } from 'marked';
+    import MarkedData from '../../../../components/MarkedData.svelte';
     import { page } from '$app/stores';
     export let data;
 
@@ -13,4 +13,11 @@
     <title>{subpage.title}</title>
 </svelte:head>
 
-{@html marked(subpage.content)}
+<MarkedData
+    markedData={{
+        subpage: true,
+        title: subpage.title,
+        content: subpage.content,
+        media: { data: subpage.media.data },
+    }}
+/>

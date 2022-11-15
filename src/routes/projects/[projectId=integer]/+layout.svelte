@@ -49,7 +49,6 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            width: 70%;
 
             @media only screen and (max-width: 1080px) {
                 width: 100%;
@@ -57,6 +56,7 @@
         }
 
         aside {
+            z-index: 1;
             width: 30%;
             height: fit-content;
             background-color: wheat;

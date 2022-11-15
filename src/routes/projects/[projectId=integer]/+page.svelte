@@ -1,5 +1,5 @@
 <script>
-    import { marked } from 'marked';
+    import MarkedData from '../../../components/MarkedData.svelte';
     export let data;
 </script>
 
@@ -7,6 +7,13 @@
     <title>{data.project.attributes.title}</title>
 </svelte:head>
 
-<div>
-    {@html marked(data.project.attributes.content)}
-</div>
+<MarkedData
+    markedData={{
+        title: data.project.attributes.title,
+        content: data.project.attributes.content,
+        media: { data: data.project.attributes.media.data },
+    }}
+/>
+
+<style>
+</style>

@@ -15,13 +15,13 @@
         display: flex;
         justify-content: center;
         position: relative;
-        width: 100vw;
+        // width: 100vw;
         min-height: 110vh;
     }
 
     div.background {
         z-index: 0;
-        width: 100vw;
+        width: 100%;
         height: 100%;
         position: absolute;
     }
@@ -33,7 +33,6 @@
         z-index: 1;
         display: flex;
         flex-direction: column;
-        width: 90vw;
         max-width: 95%;
         max-height: 80%;
         padding-block: 5rem;
