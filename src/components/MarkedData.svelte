@@ -15,13 +15,15 @@
     <div class="content">
         {@html marked(markedData.content)}
         {#if markedData.media.data}
-            {#each markedData.media.data as image}
-                <img
-                    class="fullscreen-image"
-                    src={image.attributes.url}
-                    alt={image.attributes.alternativeText}
-                />
-            {/each}
+            <div class="images">
+                {#each markedData.media.data as image}
+                    <img
+                        class="fullscreen-image"
+                        src={image.attributes.url}
+                        alt={image.attributes.alternativeText}
+                    />
+                {/each}
+            </div>
         {/if}
     </div>
 </div>
@@ -29,10 +31,15 @@
 <style lang="scss">
     .wrapper {
         max-width: 60rem;
+        margin-inline: auto;
 
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+        }
         .content {
             img.fullscreen-image {
-                max-width: 100%;
+                max-width: 80vw;
                 margin-block: 1rem;
                 margin-inline: 1rem;
                 float: none;

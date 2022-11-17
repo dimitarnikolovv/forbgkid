@@ -1,32 +1,28 @@
 <script>
-    /** @type {import('./$types').PageData} */
     import Main from '../../components/Main.svelte';
     import Section from '../../components/Section.svelte';
-    import News from '../../components/News.svelte';
+    import qs from 'qs';
+    import PaginationWrapper from '../../components/PaginationWrapper.svelte';
 
-    export let data;
+    const querry = qs.stringify({
+        fields: ['title', 'description', 'slug'],
+        populate: 'media',
+    });
+
+    const params = {
+        fetchURL: 'https://forbgkids-cms.herokuapp.com/api/posts',
+        querry: querry,
+        targetEndpoint: 'news',
+        title: 'Новини',
+    };
 </script>
+
+<svelte:head>
+    <title>Новини</title>
+</svelte:head>
 
 <Main>
     <Section>
-        <div class="news-wrapper">
-            {#each data.posts as post}
-                <News data={post} />
-            {/each}
-        </div>
+        <PaginationWrapper {params} />
     </Section>
 </Main>
-
-<style lang="scss">
-    div.news-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
-        padding-inline: 10%;
-
-        @media only screen and (max-width: 1024px) {
-            padding-inline: 0;
-        }
-    }
-</style>

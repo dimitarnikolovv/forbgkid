@@ -24,7 +24,7 @@
         flex-direction: column;
         width: 95%;
         max-height: 80%;
-        padding-block: 5rem;
+        padding-block: 3rem;
         background-color: transparent;
 
         @media only screen and (max-width: 968px) {

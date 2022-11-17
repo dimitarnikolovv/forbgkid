@@ -39,6 +39,7 @@
 <style lang="scss">
     .section-wrap {
         display: flex;
+        justify-content: center;
         gap: 3rem;
 
         @media only screen and (max-width: 1080px) {

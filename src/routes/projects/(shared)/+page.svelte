@@ -1,7 +1,19 @@
 <script>
+    import qs from 'qs';
     import { fly } from 'svelte/transition';
-    import Project from '../../../components/Project.svelte';
-    export let data;
+    import PaginationWrapper from '../../../components/PaginationWrapper.svelte';
+
+    const querry = qs.stringify({
+        fields: ['title', 'description'],
+        populate: 'media',
+    });
+
+    const params = {
+        fetchURL: 'https://forbgkids-cms.herokuapp.com/api/projects',
+        querry: querry,
+        targetEndpoint: 'projects',
+        title: 'Проекти',
+    };
 </script>
 
 <svelte:head>
@@ -9,22 +21,8 @@
 </svelte:head>
 
 <div in:fly={{ x: 100, duration: 200, delay: 300 }} out:fly={{ x: -400, duration: 200 }}>
-    <div class="project-wrap">
-        <h1>Проекти</h1>
-        {#each data.projects as project}
-            <Project
-                id={project.id}
-                title={project.attributes.title}
-                description={project.attributes.description}
-            />
-        {/each}
-    </div>
+    <PaginationWrapper {params} />
 </div>
 
 <style lang="scss">
-    div.project-wrap {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-    }
 </style>

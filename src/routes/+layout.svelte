@@ -19,5 +19,8 @@
 <style lang="scss">
     div.wrap {
         margin-top: 8rem;
+        @media only screen and (max-width: 768px) {
+            margin-top: 5rem;
+        }
     }
 </style>

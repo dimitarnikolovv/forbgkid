@@ -2,7 +2,7 @@ export async function load({ fetch }) {
     const [homepageReq, postsPreviewReq] = await Promise.all([
         fetch('https://forbgkids-cms.herokuapp.com/api/home-page?populate=*'),
         fetch(
-            'https://forbgkids-cms.herokuapp.com/api/posts?%2A&fields=title&fields=description&fields=slug'
+            'https://forbgkids-cms.herokuapp.com/api/posts?pagination[start]=0&pagination[limit]=4&fields=title&fields=description&fields=slug'
         ),
     ]);
 
@@ -12,7 +12,7 @@ export async function load({ fetch }) {
 
         return {
             homepage: homepageRes.data.attributes,
-            postsPreview: postsPreviewRes.data.slice(0, 4),
+            postsPreview: postsPreviewRes.data,
         };
     } else {
         const error = new Error(`Could not fecth data`);

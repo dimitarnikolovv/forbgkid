@@ -1,4 +1,4 @@
-<a class="small" href="https://www.kids.infrablu.xyz" target="blank">
+<a class="small" href="/">
     <img src="/images/forbgkids-logo-only.png" alt="Tree with leaves of kid's hands" />
 </a>
 

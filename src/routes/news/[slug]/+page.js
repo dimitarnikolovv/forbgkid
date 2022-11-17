@@ -1,9 +1,17 @@
 /** @type {import('./$types').PageLoad} */
+import qs from 'qs';
 
 export async function load({ fetch, params }) {
-    const querry = `https://forbgkids-cms.herokuapp.com/api/posts?filters[slug][$eq]=${params.slug}&populate=*`;
+    const querry = qs.stringify({
+        filters: {
+            slug: {
+                $eq: params.slug,
+            },
+        },
+        populate: '*',
+    });
 
-    const res = await fetch(querry);
+    const res = await fetch(`https://forbgkids-cms.herokuapp.com/api/posts?${querry}`);
     // A 404 status means "NOT FOUND"
     if (res.status === 404) {
         const error = new Error(`The post ${params.slug} was not found`);

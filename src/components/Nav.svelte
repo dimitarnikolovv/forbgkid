@@ -15,7 +15,7 @@
 
 <nav>
     <label class="nav-button" for="check">
-        <input type="checkbox" id="check" on:click={doChecked} />
+        <input type="checkbox" id="check" checked={isChecked} on:click={doChecked} />
         <span />
         <span />
         <span />
