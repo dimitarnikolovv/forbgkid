@@ -1,6 +1,11 @@
+import qs from 'qs';
+
 export async function load({ fetch }) {
-    const query = `https://forbgkids-cms.herokuapp.com/api/centre?populate[0]=*&&populate[1]=nested_subpage`;
-    const res = await fetch(query);
+    const querry = qs.stringify({
+        populate: ['*', 'nested_subpage'],
+    });
+
+    const res = await fetch(`https://forbgkids-cms.herokuapp.com/api/centre?${querry}`);
 
     if (res.status === 404) {
         const error = new Error(`The post was not found`);

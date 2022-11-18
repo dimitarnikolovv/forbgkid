@@ -9,7 +9,8 @@
         title: '',
         targetEndpoint: '',
     };
-
+    $: console.log(scrollY);
+    let scrollY = 0;
     let stateLoading = true;
     let stateEntries = null;
     let stateMeta = null;
@@ -31,7 +32,6 @@
             );
 
         const url = `${params.fetchURL}?${querry}`;
-        console.log(url);
         const res = await fetch(url);
 
         if (res.status === 404) {
@@ -44,6 +44,7 @@
     }
 
     async function updateEntriesByPage(pageNumber) {
+        scrollY = 0;
         stateLoading = true;
         stateCurrentPageNumber = pageNumber;
         const { entries, meta } = await getEntries(stateCurrentPageNumber, stateCurrentPageSize);
@@ -56,6 +57,8 @@
         await updateEntriesByPage(stateCurrentPageNumber);
     });
 </script>
+
+<svelte:window bind:scrollY />
 
 {#if !stateLoading}
     <div class="head">
@@ -102,6 +105,8 @@
             disabled={stateMeta.pagination.page === stateMeta.pagination.pageCount}>Напред</button
         >
     </div>
+{:else}
+    <div class="skeleton" />
 {/if}
 
 <style lang="scss">
@@ -118,6 +123,7 @@
         @media only screen and (max-width: 768px) {
             flex-direction: column;
             align-items: center;
+            margin-block-end: 2rem;
         }
     }
     .controls {

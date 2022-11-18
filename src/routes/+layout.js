@@ -1,9 +1,20 @@
+import qs from 'qs';
 export async function load({ fetch }) {
+    const querryPage = qs.stringify({
+        populate: '*',
+    });
+
+    const querryPosts = qs.stringify({
+        pagination: {
+            start: 0,
+            limit: 4,
+        },
+        fields: ['title', 'description', 'slug'],
+    });
+
     const [homepageReq, postsPreviewReq] = await Promise.all([
-        fetch('https://forbgkids-cms.herokuapp.com/api/home-page?populate=*'),
-        fetch(
-            'https://forbgkids-cms.herokuapp.com/api/posts?pagination[start]=0&pagination[limit]=4&fields=title&fields=description&fields=slug'
-        ),
+        fetch(`https://forbgkids-cms.herokuapp.com/api/home-page?${querryPage}`),
+        fetch(`https://forbgkids-cms.herokuapp.com/api/posts?${querryPosts}`),
     ]);
 
     if (homepageReq.ok && postsPreviewReq.ok) {

@@ -1,7 +1,11 @@
-export async function load({ fetch, params }) {
-    const res = await fetch(
-        `https://forbgkids-cms.herokuapp.com/api/about/?populate[0]=*&populate[1]=media&populate[2]=subpage.media`
-    );
+import qs from 'qs';
+
+export async function load({ fetch }) {
+    const querry = qs.stringify({
+        populate: ['*', 'media', 'subpage.media'],
+    });
+
+    const res = await fetch(`https://forbgkids-cms.herokuapp.com/api/about/?${querry}`);
     if (res.status === 404) {
         const error = new Error(`The page was not found`);
         return { status: 404, error };

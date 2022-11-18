@@ -49,6 +49,7 @@
 
     .wrapper :global(.content img) {
         max-width: 40%;
+        max-height: 300px;
         margin-block-end: 1rem;
         margin-inline-start: 1rem;
         display: block;

@@ -1,4 +1,4 @@
-export async function load({ fetch, params }) {
+export async function load({ fetch }) {
     const query = `https://forbgkids-cms.herokuapp.com/api/centre?populate[0]=*&populate[1]=fullscreen_media&populate[2]=nested_subpage.fullscreen_media&populate[3]=nested_subpage.subpage&populate[4]=nested_subpage.subpage.fullscreen_media`;
     const res = await fetch(query);
 
