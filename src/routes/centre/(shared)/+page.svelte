@@ -11,7 +11,6 @@
     markedData={{
         title: data.centre.title,
         content: data.centre.content,
-        // media: { data: data.centre.fullscreen_media.data },
-        media: { data: false },
+        media: { data: data.centre.fullscreen_media.data },
     }}
 />

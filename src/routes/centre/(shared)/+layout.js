@@ -2,7 +2,7 @@ import qs from 'qs';
 
 export async function load({ fetch }) {
     const querry = qs.stringify({
-        populate: ['*', 'nested_subpage'],
+        populate: ['*', 'fullscreen_media', 'nested_subpage'],
     });
 
     const res = await fetch(`https://forbgkids-cms.herokuapp.com/api/centre?${querry}`);

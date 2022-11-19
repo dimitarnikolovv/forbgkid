@@ -40,6 +40,7 @@
         .content {
             img.fullscreen-image {
                 max-width: 80vw;
+                max-height: unset;
                 margin-block: 1rem;
                 margin-inline: 1rem;
                 float: none;
@@ -48,8 +49,8 @@
     }
 
     .wrapper :global(.content img) {
-        max-width: 40%;
-        max-height: 300px;
+        max-width: fit-content;
+        max-height: 17vmax;
         margin-block-end: 1rem;
         margin-inline-start: 1rem;
         display: block;
@@ -78,6 +79,10 @@
         background-image: url('/icons/check-mark-24x24.svg');
         background-repeat: no-repeat;
         padding-inline-start: 32px;
+    }
+
+    .wrapper :global(ul) {
+        display: inline;
     }
 
     .wrapper :global(table) {
