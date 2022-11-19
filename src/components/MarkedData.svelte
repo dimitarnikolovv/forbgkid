@@ -74,9 +74,13 @@
         background-size: 100% 2px;
     }
 
-    .wrapper :global(li) {
+    .wrapper :global(ul li) {
         background-image: url('/icons/check-mark-24x24.svg');
         background-repeat: no-repeat;
         padding-inline-start: 32px;
+    }
+
+    .wrapper :global(table) {
+        margin-block: 3rem;
     }
 </style>

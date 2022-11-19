@@ -27,6 +27,7 @@
                         page: pageNumber,
                         pageSize: pageSize,
                     },
+                    sort: ['createdAt:desc'],
                 },
                 { encodeValuesOnly: true }
             );

@@ -20,10 +20,6 @@
             <div class="content">
                 <div>
                     {@html marked(data.homepage.content)}
-                </div>
-                <div>
-                    {@html marked(data.homepage.content2)}
-
                     <Button params={{ text: 'Още за Центъра', link: '/centre' }} />
                 </div>
             </div>
