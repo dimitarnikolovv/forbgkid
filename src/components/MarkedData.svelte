@@ -49,7 +49,9 @@
     }
 
     .wrapper :global(.content img) {
-        max-width: fit-content;
+        width: fit-content;
+        max-width: 40%;
+        height: fit-content;
         max-height: 17vmax;
         margin-block-end: 1rem;
         margin-inline-start: 1rem;
