@@ -13,7 +13,7 @@
         markedData={{
             title: data.about.title,
             content: data.about.content,
-            media: { data: false },
+            media: { data: data.about.fullscreen_media.data },
         }}
     />
 </div>

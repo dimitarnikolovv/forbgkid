@@ -2,10 +2,8 @@
     export let clr = 'white';
 </script>
 
-<section style="background-color: {clr};">
-    <div class="container {clr === 'white' ? 'text-dark' : 'text-light'}">
-        <slot />
-    </div>
+<section style="background-color: {clr};" class={clr === 'white' ? 'text-dark' : 'text-light'}>
+    <slot />
 </section>
 
 <style lang="scss">
@@ -13,22 +11,11 @@
         display: flex;
         justify-content: center;
         min-height: 110vh;
+        min-width: 60vw;
+        max-width: 60rem;
     }
 
     :global(div.text-light) {
         color: #17252a;
-    }
-    div.container {
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        width: 95%;
-        max-height: 80%;
-        padding-block: 3rem;
-        background-color: transparent;
-
-        @media only screen and (max-width: 968px) {
-            padding: 1rem;
-        }
     }
 </style>

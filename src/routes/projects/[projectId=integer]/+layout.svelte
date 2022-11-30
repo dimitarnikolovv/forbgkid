@@ -11,44 +11,19 @@
 
 <Main>
     <Section>
-        <div class="section-wrap">
-            <div class="content">
-                <slot />
-            </div>
-            {#if data.project.attributes.subpage[0]}
-                <Sidebar title="Още към проекта">
-                    {#each data.project.attributes.subpage as subpage}
-                        <li>
-                            <a
-                                class:active={currentPage === subpage.slug}
-                                href="/projects/{data.project.id}/{subpage.slug}">{subpage.title}</a
-                            >
-                        </li>
-                    {/each}
-                </Sidebar>
-            {/if}
-        </div>
+        <slot />
     </Section>
+    {#if data.project.attributes.sub_pages.data}
+        <Sidebar title="Още към проекта">
+            {#each data.project.attributes.sub_pages.data as subpage}
+                <li>
+                    <a
+                        class:active={currentPage === subpage.attributes.slug}
+                        href="/projects/{data.project.id}/{subpage.attributes.slug}"
+                        >{subpage.attributes.title}</a
+                    >
+                </li>
+            {/each}
+        </Sidebar>
+    {/if}
 </Main>
-
-<style lang="scss">
-    .section-wrap {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-
-        @media only screen and (max-width: 1080px) {
-            flex-direction: column;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-
-            @media only screen and (max-width: 1080px) {
-                width: 100%;
-            }
-        }
-    }
-</style>

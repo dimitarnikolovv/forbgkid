@@ -2,7 +2,7 @@ import qs from 'qs';
 
 export async function load({ fetch, params }) {
     const querry = qs.stringify({
-        populate: ['*', 'media', 'subpage.media'],
+        populate: ['*', 'media', 'sub_pages', 'sub_pages.fullscreen_media'],
     });
     const res = await fetch(
         `https://forbgkids-cms.herokuapp.com/api/projects/${params.projectId}?${querry}`

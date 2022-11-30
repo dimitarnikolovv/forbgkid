@@ -286,6 +286,7 @@ body {
 ol,
 ul {
     list-style: none;
+    list-style-position: inside;
 }
 blockquote,
 q {
@@ -708,8 +709,8 @@ html {
 
 .skeleton {
     margin-inline: auto;
-    width: 90vw;
-    height: 80vh;
+    width: 60vw;
+    height: 67%;
     border-radius: 3vh;
 
     background-color: #e2e5e7;

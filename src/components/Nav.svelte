@@ -4,7 +4,10 @@
     import { slide } from 'svelte/transition';
 
     $: isActive = function (url) {
-        return url === $page.url.pathname ? true : false;
+        let pattern = new RegExp(`\\B\\${url}`);
+        let matched = $page.url.pathname.match(pattern);
+
+        return url == matched;
     };
 
     let isChecked = false;
@@ -24,9 +27,11 @@
             <div class="nav-container" transition:slide>
                 <ul class="mobile-nav">
                     <li>
-                        <a href="/" class:active={isActive('/')} on:click={doChecked}>Начало</a>
+                        <a href="/" class:active={$page.url.pathname === '/'} on:click={doChecked}
+                            >Начало</a
+                        >
                         <div class="arrow">
-                            <Arrow active={isActive('/')} directional={true} />
+                            <Arrow active={$page.url.pathname === '/'} directional={true} />
                         </div>
                     </li>
                     <li>
@@ -77,9 +82,9 @@
     </label>
     <ul class="main-nav">
         <li>
-            <a href="/" class:active={isActive('/')}>Начало</a>
+            <a href="/" class:active={$page.url.pathname === '/'}>Начало</a>
             <div class="arrow">
-                <Arrow active={isActive('/')} directional={true} />
+                <Arrow active={$page.url.pathname === '/'} directional={true} />
             </div>
         </li>
         <li>

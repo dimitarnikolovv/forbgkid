@@ -19,16 +19,19 @@
         top: 0;
         z-index: 10;
         width: 100vw;
+        min-height: 3rem;
         padding-block: 1rem;
-        background-color: rgba(0, 0, 0, 0.85);
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: saturate(50%) blur(4px);
+
         div.container {
+            z-index: 12;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 6rem;
             max-width: 90%;
             margin-inline: auto;
-
             @media only screen and (max-width: 768px) {
                 height: 3rem;
             }

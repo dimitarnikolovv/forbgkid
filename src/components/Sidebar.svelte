@@ -18,9 +18,10 @@
 
 <style lang="scss">
     aside {
+        z-index: 1;
         position: sticky;
         top: 10rem;
-        z-index: 1;
+        width: 30%;
         min-width: 30%;
         height: fit-content;
         background-color: wheat;

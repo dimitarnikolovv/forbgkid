@@ -19,6 +19,7 @@
         transition: border-radius 200ms ease;
 
         a {
+            color: currentColor;
             font-style: italic;
             background-image: linear-gradient(90deg, rgb(115, 167, 245), rgb(0, 86, 214));
             background-size: 0% 1px;

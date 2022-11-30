@@ -2,6 +2,7 @@
     import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
     import '@splidejs/svelte-splide/css';
     import ArrowSlide from './icons/ArrowSlide.svelte';
+    import { fly } from 'svelte/transition';
 
     export let slides = {
         name: '',
@@ -26,40 +27,45 @@
 </script>
 
 <Splide {options} hasTrack={false}>
-    <div style="position: relative">
-        <SplideTrack>
-            {#each slides as slide}
-                <SplideSlide>
-                    <img
-                        class="image-wh"
-                        src={slide.attributes.url}
-                        alt={slide.attributes.alternativeText}
-                    />
-                    <div class="slide-title">
-                        <a href={slide.attributes.name}>{slide.attributes.caption}</a>
-                    </div>
-                </SplideSlide>
-            {/each}
-        </SplideTrack>
+    <div in:fly={{ x: 4000, duration: 400, delay: 300 }} out:fly={{ x: -1000, duration: 300 }}>
+        <div style="position: relative">
+            <SplideTrack>
+                {#each slides as slide}
+                    <SplideSlide>
+                        <img
+                            class="image-wh"
+                            src={slide.attributes.url}
+                            alt={slide.attributes.alternativeText}
+                        />
+                        <div class="slide-title">
+                            <a href={slide.attributes.name}>{slide.attributes.caption}</a>
+                        </div>
+                    </SplideSlide>
+                {/each}
+            </SplideTrack>
 
-        <div class="splide__arrows">
-            <button class="splide__arrow splide__arrow--prev">
-                <ArrowSlide direction="left" />
-            </button>
-            <button class="splide__arrow splide__arrow--next">
-                <ArrowSlide direction="right" />
-            </button>
-            <div class="background background--left" />
-            <div class="background background--right" />
+            <div class="splide__arrows">
+                <button class="splide__arrow splide__arrow--prev">
+                    <ArrowSlide direction="left" />
+                </button>
+                <button class="splide__arrow splide__arrow--next">
+                    <ArrowSlide direction="right" />
+                </button>
+                <div class="background background--left" />
+                <div class="background background--right" />
+            </div>
         </div>
-    </div>
 
-    <div class="splide__progress">
-        <div class="splide__progress__bar" />
+        <div class="splide__progress">
+            <div class="splide__progress__bar" />
+        </div>
     </div>
 </Splide>
 
 <style lang="scss">
+    :global(.splide) {
+        background-color: black;
+    }
     .slide-title {
         height: fit-content;
         display: flex;

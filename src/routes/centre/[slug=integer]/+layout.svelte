@@ -7,6 +7,11 @@
     export let data;
 
     $: currentPage = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1);
+
+    let subpage;
+    $: data.centre.sub_pages.data.forEach((sp) => {
+        if (sp.id == $page.params.slug) subpage = sp;
+    });
 </script>
 
 <Main>
@@ -14,13 +19,14 @@
         <slot />
     </Section>
 
-    {#if data.centre.sub_pages.data}
+    {#if subpage.attributes.nested_pages.data[0]}
         <Sidebar title="Още">
-            {#each data.centre.sub_pages.data as subpage}
+            {#each subpage.attributes.nested_pages.data as nested_page}
                 <li>
                     <a
-                        class:active={currentPage === subpage.attributes.slug}
-                        href="/centre/{subpage.id}">{subpage.attributes.title}</a
+                        class:active={currentPage === nested_page.attributes.slug}
+                        href="/centre/{subpage.id}/{nested_page.attributes.slug}"
+                        >{nested_page.attributes.title}</a
                     >
                 </li>
             {/each}

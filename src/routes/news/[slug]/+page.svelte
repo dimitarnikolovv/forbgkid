@@ -1,4 +1,5 @@
 <script>
+    import Main from '../../../components/Main.svelte';
     import Section from '../../../components/Section.svelte';
     import MarkedData from '../../../components/MarkedData.svelte';
     export let data;
@@ -9,14 +10,15 @@
     <title>{data.post.title}</title>
 </svelte:head>
 
-<Section>
-    <MarkedData
-        markedData={{
-            title: data.post.title,
-            content: data.post.content,
-            date: dateCreated,
-            // media: { data: data.post.media.data },
-            media: { data: false },
-        }}
-    />
-</Section>
+<Main>
+    <Section>
+        <MarkedData
+            markedData={{
+                title: data.post.title,
+                content: data.post.content,
+                date: dateCreated,
+                media: { data: false },
+            }}
+        />
+    </Section>
+</Main>

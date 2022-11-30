@@ -1,11 +1,11 @@
 <script>
-    import MarkedData from '../../../../components/MarkedData.svelte';
     import { page } from '$app/stores';
+    import MarkedData from '../../../components/MarkedData.svelte';
     export let data;
 
     let subpage;
-    $: data.project.attributes.sub_pages.data.forEach((sp) => {
-        if (sp.attributes.slug === $page.params.slug) subpage = sp;
+    $: data.centre.sub_pages.data.forEach((sp) => {
+        if (sp.id == $page.params.slug) subpage = sp;
     });
 </script>
 
@@ -15,7 +15,6 @@
 
 <MarkedData
     markedData={{
-        subpage: true,
         title: subpage.attributes.title,
         content: subpage.attributes.content,
         media: { data: subpage.attributes.fullscreen_media.data },

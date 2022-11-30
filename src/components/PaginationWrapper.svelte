@@ -9,7 +9,7 @@
         title: '',
         targetEndpoint: '',
     };
-    $: console.log(scrollY);
+
     let scrollY = 0;
     let stateLoading = true;
     let stateEntries = null;
@@ -62,49 +62,52 @@
 <svelte:window bind:scrollY />
 
 {#if !stateLoading}
-    <div class="head">
-        <h1>{params.title}</h1>
-        <div class="controls top">
-            <div>
-                <label for="inputPageSize">Покажи по </label>
-                <input
-                    name="inputPageSize"
-                    type="number"
-                    bind:value={stateCurrentPageSize}
-                    min="1"
-                    max={stateMeta.pagination.total}
-                />
-                <button
-                    on:click|preventDefault={() => updateEntriesByPage(stateCurrentPageNumber)}
-                    disabled={stateMeta.pagination.total === stateCurrentPageSize + 1}
-                    >Приложи</button
-                >
+    <div class="list-wrap">
+        <div class="head">
+            <h1>{params.title}</h1>
+            <div class="controls top">
+                <div>
+                    <label for="inputPageSize">Покажи по </label>
+                    <input
+                        name="inputPageSize"
+                        type="number"
+                        bind:value={stateCurrentPageSize}
+                        min="1"
+                        max={stateMeta.pagination.total}
+                    />
+                    <button
+                        on:click|preventDefault={() => updateEntriesByPage(stateCurrentPageNumber)}
+                        disabled={stateMeta.pagination.total === stateCurrentPageSize + 1}
+                        >Приложи</button
+                    >
+                </div>
             </div>
         </div>
-    </div>
-    <div class="entry-wrap">
-        {#each stateEntries as entry}
-            <Entry passedData={entry} targetEndpoint={params.targetEndpoint} />
-        {/each}
-    </div>
-
-    <div class="controls bottom">
-        <button
-            on:click|preventDefault={() => updateEntriesByPage(--stateCurrentPageNumber)}
-            disabled={stateMeta.pagination.page === 1}>Назад</button
-        >
-        <div class="pagination">
-            {#each { length: stateMeta.pagination.pageCount } as _, p}
-                <button
-                    on:click|preventDefault={() => updateEntriesByPage(p + 1)}
-                    disabled={stateMeta.pagination.page === p + 1}>{p + 1}</button
-                >
+        <div class="entry-wrap">
+            {#each stateEntries as entry}
+                <Entry passedData={entry} targetEndpoint={params.targetEndpoint} />
             {/each}
         </div>
-        <button
-            on:click|preventDefault={() => updateEntriesByPage(++stateCurrentPageNumber)}
-            disabled={stateMeta.pagination.page === stateMeta.pagination.pageCount}>Напред</button
-        >
+
+        <div class="controls bottom">
+            <button
+                on:click|preventDefault={() => updateEntriesByPage(--stateCurrentPageNumber)}
+                disabled={stateMeta.pagination.page === 1}>Назад</button
+            >
+            <div class="pagination">
+                {#each { length: stateMeta.pagination.pageCount } as _, p}
+                    <button
+                        on:click|preventDefault={() => updateEntriesByPage(p + 1)}
+                        disabled={stateMeta.pagination.page === p + 1}>{p + 1}</button
+                    >
+                {/each}
+            </div>
+            <button
+                on:click|preventDefault={() => updateEntriesByPage(++stateCurrentPageNumber)}
+                disabled={stateMeta.pagination.page === stateMeta.pagination.pageCount}
+                >Напред</button
+            >
+        </div>
     </div>
 {:else}
     <div class="skeleton" />
@@ -114,7 +117,7 @@
     div.entry-wrap {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 4rem;
     }
 
     .head {
@@ -152,6 +155,7 @@
         border-radius: 0.125rem;
         padding: 0.25rem 0.5rem;
         margin-inline: 0.8rem;
+        width: 2rem;
     }
     input:focus {
         border-bottom: 0.07rem solid rgb(63, 61, 61);

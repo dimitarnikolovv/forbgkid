@@ -6,7 +6,7 @@
     export let data;
 
     let subpage;
-    $: data.about.sub_pages.data.forEach((sp) => {
+    $: data.donate.sub_pages.data.forEach((sp) => {
         if (sp.attributes.slug === $page.params.slug) subpage = sp;
     });
 </script>
