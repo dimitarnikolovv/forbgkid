@@ -53,11 +53,11 @@
                         </div>
                     </li>
                     <li>
-                        <a href="/kids" class:active={isActive('/kids')} on:click={doChecked}
-                            >Нашите деца</a
+                        <a href="/centre" class:active={isActive('/centre')} on:click={doChecked}
+                            >За центъра</a
                         >
                         <div class="arrow">
-                            <Arrow active={isActive('/kids')} directional={true} />
+                            <Arrow active={isActive('/centre')} directional={true} />
                         </div>
                     </li>
                     <li>
@@ -100,9 +100,9 @@
             </div>
         </li>
         <li>
-            <a href="/kids" class:active={isActive('/kids')}>Нашите деца</a>
+            <a href="/centre" class:active={isActive('/centre')}>За центъра</a>
             <div class="arrow">
-                <Arrow active={isActive('/kids')} directional={true} />
+                <Arrow active={isActive('/centre')} directional={true} />
             </div>
         </li>
         <li>

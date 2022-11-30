@@ -1,5 +1,5 @@
 <script>
-    import { dataset_dev } from 'svelte/internal';
+    import EventList from './EventList.svelte';
 
     export let events;
 
@@ -11,8 +11,8 @@
                 day: 0,
                 isActive: true,
                 isToday: false,
-                eventStatus: false,
-                events: [{ title: '', content: '', startsAt: '' }],
+                eventStatus: { hasEvents: false, showEventList: false },
+                events: [{}],
             },
         ],
         currYear = date.getFullYear(),
@@ -39,8 +39,8 @@
             if (eventDate.getFullYear() === year && eventDate.getMonth() === month) {
                 dates.forEach((date) => {
                     if (date.day === eventDate.getDate()) {
-                        date.eventStatus = true;
-                        date.events.push({ title: event.attributes.title });
+                        date.eventStatus.hasEvents = true;
+                        date.events.push(event.attributes);
                     }
                 });
             }
@@ -51,8 +51,8 @@
                         date.position === 'last' &&
                         date.day === eventDate.getDate()
                     ) {
-                        date.eventStatus = true;
-                        date.events.push({ title: event.attributes.title });
+                        date.eventStatus.hasEvents = true;
+                        date.events.push(event.attributes);
                     }
                 });
             }
@@ -63,8 +63,8 @@
                         date.position === 'next' &&
                         date.day === eventDate.getDate()
                     ) {
-                        date.eventStatus = true;
-                        date.events.push({ title: event.attributes.title });
+                        date.eventStatus.hasEvents = true;
+                        date.events.push(event.attributes);
                     }
                 });
             }
@@ -86,7 +86,7 @@
                 day: lastDateofLastMonth - i + 1,
                 isActive: false,
                 position: 'last',
-                eventStatus: false,
+                eventStatus: { hasEvents: false, showEventList: false },
                 events: [],
             });
         }
@@ -97,7 +97,13 @@
                 currMonth === new Date().getMonth() &&
                 currYear === new Date().getFullYear();
 
-            dates.push({ day: i, isActive: true, isToday, eventStatus: false, events: [] });
+            dates.push({
+                day: i,
+                isActive: true,
+                isToday,
+                eventStatus: { hasEvents: false, showEventList: false },
+                events: [],
+            });
         }
 
         if (lastDayofMonth > 0) {
@@ -106,7 +112,7 @@
                     day: i - lastDayofMonth + 1,
                     isActive: false,
                     position: 'next',
-                    eventStatus: false,
+                    eventStatus: { hasEvents: false, showEventList: false },
                     events: [],
                 });
             }
@@ -116,7 +122,6 @@
     }
 
     renderCalendar();
-    console.log(dates);
 
     function iconOnClick(e) {
         currMonth = e.target.id === 'prev' ? currMonth - 1 : currMonth + 1;
@@ -171,18 +176,35 @@
             {#each dates as date}
                 <li class:inactive={!date.isActive} class:today={date?.isToday}>
                     <span>{date.day}</span>
-                    {#if date.eventStatus === true}
+                    {#if date.eventStatus.hasEvents === true}
                         <div class="indicator" />
 
                         <div class="events">
                             {#each date.events as event}
-                                <div class="event-preview">
+                                <div
+                                    class="event-preview"
+                                    on:click={() => {
+                                        date.eventStatus.showEventList = true;
+                                    }}
+                                    on:keypress={() => {
+                                        date.eventStatus.showEventList = true;
+                                    }}
+                                >
                                     <p>{event.title}</p>
                                 </div>
                             {/each}
                         </div>
                     {/if}
                 </li>
+                {#if date.eventStatus.showEventList}
+                    <EventList
+                        events={date.events}
+                        date={{ day: date.day, month: months[currMonth] }}
+                        onClose={() => {
+                            date.eventStatus.showEventList = false;
+                        }}
+                    />
+                {/if}
             {/each}
         </ul>
     </div>
@@ -258,6 +280,7 @@
         }
 
         .days {
+            position: relative;
             margin-bottom: 20px;
 
             li {
@@ -265,21 +288,17 @@
                 cursor: pointer;
                 position: relative;
                 height: 5rem;
-                padding-block-start: 0.3rem;
+                padding-block: 0.3rem;
 
                 .events {
                     display: flex;
                     flex-direction: column;
+                    flex: 1;
                     gap: 0.3em;
                     margin-block-start: 0.3em;
-                    overflow-x: hidden;
                     overflow-y: auto;
-                    height: 70%;
                     max-width: 100%;
-
-                    @media only screen and (max-width: 768px) {
-                        gap: 1em;
-                    }
+                    max-height: 70%;
 
                     &::-webkit-scrollbar {
                         width: 1px;
@@ -290,7 +309,10 @@
                     border-radius: 10px;
                     margin-inline: auto;
                     width: fit-content;
-                    max-height: 3rem;
+                    max-width: 100%;
+                    min-height: 1.6em;
+                    height: 1.6em;
+                    overflow: hidden;
 
                     p {
                         background-color: wheat;
@@ -315,12 +337,12 @@
 
                 &::before {
                     position: absolute;
+                    z-index: -1;
                     content: '';
                     left: 50%;
-                    top: 20%;
+                    top: 18%;
                     height: 1.6em;
                     width: 1.6em;
-                    z-index: -1;
                     border-radius: 50%;
                     transform: translate(-50%, -50%);
                 }

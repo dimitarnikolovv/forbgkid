@@ -14,15 +14,15 @@
 
     <Sidebar title="Вижте още">
         <li>
+            <a class:active={currentPage === 'calendar'} href="/projects/calendar">Календар</a>
+        </li>
+        <li>
             <a class:active={currentPage === 'awards'} href="/projects/awards">Награди</a>
         </li>
         <li>
             <a class:active={currentPage === 'privacy'} href="/projects/privacy"
                 >Политика за поверителност и личните данни</a
             >
-        </li>
-        <li>
-            <a class:active={currentPage === 'calendar'} href="/projects/calendar">Календар</a>
         </li>
     </Sidebar>
 </Main>

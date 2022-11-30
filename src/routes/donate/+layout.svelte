@@ -28,22 +28,24 @@
 
     {#if currentPage !== 'darete-sega'}
         <div class="donate">
-            <a href="/donate/darete-sega">
-                <img src="./images/donate_now.png" alt="" />
-            </a>
+            <a href="/donate/darete-sega">Дарете сега</a>
         </div>
     {/if}
 </Main>
 
 <style lang="scss">
     div.donate {
+        z-index: 30;
         position: fixed;
         bottom: 1rem;
         left: 1rem;
-
-        img {
+        a {
+            display: block;
             width: 6rem;
-            height: fit-content;
+            height: 6rem;
+            background-image: url('./images/donate_now.png');
+            background-size: contain;
+            font-size: 0;
         }
     }
 </style>
