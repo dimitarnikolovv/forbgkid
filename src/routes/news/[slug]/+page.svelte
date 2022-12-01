@@ -12,13 +12,15 @@
 
 <Main>
     <Section>
-        <MarkedData
-            markedData={{
-                title: data.post.title,
-                content: data.post.content,
-                date: dateCreated,
-                media: { data: false },
-            }}
-        />
+        <article>
+            <MarkedData
+                markedData={{
+                    title: data.post.title,
+                    content: data.post.content,
+                    date: dateCreated,
+                    media: { data: false },
+                }}
+            />
+        </article>
     </Section>
 </Main>

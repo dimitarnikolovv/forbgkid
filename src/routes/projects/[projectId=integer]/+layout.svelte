@@ -11,7 +11,9 @@
 
 <Main>
     <Section>
-        <slot />
+        <article>
+            <slot />
+        </article>
     </Section>
     {#if data.project.attributes.sub_pages.data}
         <Sidebar title="Още към проекта">
