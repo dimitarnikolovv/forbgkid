@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-    <title>{subpage.title}</title>
+    <title>{subpage.attributes.title}</title>
 </svelte:head>
 
 <MarkedData

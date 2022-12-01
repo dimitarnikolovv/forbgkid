@@ -730,3 +730,10 @@ html {
         background-position: right -40px top 0;
     }
 }
+
+div.donate-now-icon {
+    width: 6rem;
+    height: 6rem;
+    background-image: url('/images/donate_now.png');
+    background-size: contain;
+}

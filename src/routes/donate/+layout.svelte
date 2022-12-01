@@ -28,7 +28,7 @@
 
     {#if currentPage !== 'darete-sega'}
         <div class="donate">
-            <a href="/donate/darete-sega"><div /></a>
+            <a href="/donate/darete-sega"><div class="donate-now-icon" /></a>
         </div>
     {/if}
 </Main>
@@ -41,13 +41,6 @@
         left: 1rem;
         a {
             display: block;
-
-            div {
-                width: 6rem;
-                height: 6rem;
-                background-image: url('./images/donate_now.png');
-                background-size: contain;
-            }
         }
     }
 </style>
