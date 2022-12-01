@@ -10,8 +10,9 @@
             {@html marked(content)}
         </p>
         <p>
-            Designed and Made By <a href="https://www.infrablu.xyz" target="blank"
-                ><span class="text-modifier">InfraBlu</span></a
+            Designed and Made as non-profit project By <a
+                href="https://www.infrablu.xyz"
+                target="blank"><span class="text-modifier">InfraBlu</span></a
             >
             {year} &copy;
         </p>
