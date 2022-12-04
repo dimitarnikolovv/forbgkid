@@ -1,55 +1,280 @@
 <script>
-    /** @type {import('./$types').PageData} */
-    export let data;
+    import { enhance } from '$app/forms';
+    import Main from '../../components/Main.svelte';
+    import Section from '../../components/Section.svelte';
+
     /** @type {import('./$types').ActionData} */
     export let form;
 
-    import Main from '../../components/Main.svelte';
-    import Section from '../../components/Section.svelte';
+    function displayFile(e) {
+        const [file] = e.target.files;
+        const { name: fileName, size } = file;
+        const fileSize = (size / 1000).toFixed(2);
+
+        e.target.nextElementSibling.querySelector('p').innerHTML = `${fileName} - ${fileSize}KB`;
+    }
 </script>
 
 <Main>
     <Section>
-        <form method="POST" enctype="multipart/form-data">
-            <label for="names">Имена</label>
+        <form method="POST" enctype="multipart/form-data" use:enhance>
             <fieldset id="names">
-                <label for="firstName">Име</label>
-                <input type="text" name="firstName" id="firstName" />
+                <legend>Информация за кандидата (Всички полета са задължителни)</legend>
+                <div class="block-wrapper">
+                    Казвам се
+                    <label for="firstName" class="sr-only">Име</label>
+                    <input
+                        type="text"
+                        name="first_name"
+                        id="firstName"
+                        placeholder="Име"
+                        required
+                    />
 
-                <label for="middleName">Презиме</label>
-                <input type="text" name="middleName" id="middleName" />
+                    <label for="middleName" class="sr-only">Презиме</label>
+                    <input
+                        type="text"
+                        name="middle_name"
+                        id="middleName"
+                        placeholder="Презиме"
+                        required
+                    />
 
-                <label for="lastName">Фамилия</label>
-                <input type="text" name="lastName" id="lastName" />
-            </fieldset>
+                    <label for="lastName" class="sr-only">Фамилия</label>
+                    <input
+                        type="text"
+                        name="last_name"
+                        id="lastName"
+                        placeholder="Фамилия"
+                        required
+                    />
+                    .
+                </div>
 
-            <fieldset id="geo-info">
-                <label for="age">Възраст</label>
-                <input type="number" name="age" id="age" />
+                <div class="block-wrapper">
+                    На
+                    <label for="age" class="sr-only">Възраст</label>
+                    <input type="number" name="age" id="age" placeholder="Години" required />
+                    години съм и уча в/ъв
+                    <label for="school" class="sr-only">Учебно заведение</label>
+                    <input
+                        type="text"
+                        name="school"
+                        id="school"
+                        placeholder="Учебно заведение"
+                        required
+                    />
+                    в град
+                    <label for="city" class="sr-only">Град</label>
+                    <input type="text" name="city" id="city" placeholder="Град" required />
+                    .
+                </div>
 
-                <label for="school">Учебно заведение</label>
-                <input type="text" name="school" id="school" />
-
-                <label for="city">Град</label>
-                <input type="text" name="city" id="city" />
-            </fieldset>
-
-            <fieldset id="contact-info">
-                <label for="tel">Телефон</label>
-                <input type="tel" name="tel" id="tel" />
-
-                <label for="email">Имейл</label>
-                <input type="email" name="email" id="email" />
+                <div class="block-wrapper">
+                    Може да ме потърсите на телефон
+                    <label for="tel" class="sr-only">Телефон</label>
+                    <input type="tel" name="tel" id="tel" placeholder="Телефон" required />
+                    или на имейл
+                    <label for="email" class="sr-only">Имейл</label>
+                    <input type="email" name="email" id="email" placeholder="Имейл" required />
+                    .
+                </div>
             </fieldset>
 
             <fieldset id="files">
-                <label for="art">Творба</label>
-                <input type="file" name="file" accept="*" id="art" />
+                <legend>Файлове за прикачване</legend>
 
-                <label for="declaration">Декларация</label>
-                <input type="file" name="declaration" accept="*" id="declaration" />
+                <input
+                    class="sr-only"
+                    type="file"
+                    name="work"
+                    accept="*"
+                    id="work"
+                    on:change={(e) => {
+                        displayFile(e);
+                    }}
+                    required
+                />
+                <label for="work" class="file-label">
+                    <h2>Творба</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                        <path
+                            d="M12.5 40q-4.3 0-7.4-3.1Q2 33.8 2 29.5q0-3.9 2.475-6.875t6.375-3.575q1-4.85 4.7-7.925T24.1 8.05q5.65 0 9.475 4.075Q37.4 16.2 37.4 21.9v1.2q3.6-.1 6.1 2.325Q46 27.85 46 31.55q0 3.45-2.5 5.95T37.55 40H25.5q-1.2 0-2.1-.9-.9-.9-.9-2.1V24.1l-4.15 4.15-2.15-2.15 7.8-7.8 7.8 7.8-2.15 2.15-4.15-4.15V37h12.05q2.25 0 3.85-1.6t1.6-3.85q0-2.25-1.6-3.85t-3.85-1.6H34.4v-4.2q0-4.45-3.025-7.65t-7.475-3.2q-4.45 0-7.5 3.2t-3.05 7.65h-.95q-3.1 0-5.25 2.175T5 29.45q0 3.1 2.2 5.325T12.5 37h7v3ZM24 25.5Z"
+                        />
+                    </svg>
+                    <p>Натиснете за да изберете файл или го привлачете в полето.</p>
+                </label>
+
+                <input
+                    class="sr-only"
+                    type="file"
+                    name="declaration"
+                    accept="*"
+                    id="declaration"
+                    on:change={(e) => {
+                        displayFile(e);
+                    }}
+                    required
+                />
+                <label for="declaration" class="file-label">
+                    <h2>Декларация</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                        <path
+                            d="M12.5 40q-4.3 0-7.4-3.1Q2 33.8 2 29.5q0-3.9 2.475-6.875t6.375-3.575q1-4.85 4.7-7.925T24.1 8.05q5.65 0 9.475 4.075Q37.4 16.2 37.4 21.9v1.2q3.6-.1 6.1 2.325Q46 27.85 46 31.55q0 3.45-2.5 5.95T37.55 40H25.5q-1.2 0-2.1-.9-.9-.9-.9-2.1V24.1l-4.15 4.15-2.15-2.15 7.8-7.8 7.8 7.8-2.15 2.15-4.15-4.15V37h12.05q2.25 0 3.85-1.6t1.6-3.85q0-2.25-1.6-3.85t-3.85-1.6H34.4v-4.2q0-4.45-3.025-7.65t-7.475-3.2q-4.45 0-7.5 3.2t-3.05 7.65h-.95q-3.1 0-5.25 2.175T5 29.45q0 3.1 2.2 5.325T12.5 37h7v3ZM24 25.5Z"
+                        />
+                    </svg>
+                    <p>Натиснете за да изберете файл или го привлачете в полето.</p>
+                </label>
             </fieldset>
-            <button type="submit">Submit</button>
+
+            <fieldset>
+                <input type="checkbox" name="policy" id="policy" required />
+                <label for="policy">
+                    Съгласен съм с <a href="./projects/privacy">
+                        политиката за използване на лични данни</a
+                    >.</label
+                >
+            </fieldset>
+            <button type="submit">Изпрати</button>
         </form>
     </Section>
 </Main>
+
+<style lang="scss">
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    form {
+        background-color: white;
+        height: fit-content;
+        min-width: 60vw;
+        max-width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+    }
+
+    .block-wrapper {
+        margin-block: 0.8em;
+    }
+
+    input {
+        position: relative;
+        &[type='text'],
+        &[type='number'],
+        &[type='email'],
+        &[type='tel'] {
+            display: inline;
+            border: none;
+            border-bottom: 1px solid black;
+            margin-inline: 0.3em;
+        }
+
+        &[type='number'] {
+            width: 2.5em;
+        }
+    }
+
+    fieldset {
+        &#files {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-bottom: 3em;
+            border-bottom: 1px solid #ccc;
+            border-radius: 3px;
+
+            input[type='file']:hover + label,
+            input[type='file']:focus + label {
+                outline: 1px solid black;
+            }
+
+            label.file-label {
+                text-align: center;
+                cursor: pointer;
+                outline: 1px dashed #ccc;
+                background-color: #fbfcff;
+                border-radius: 10px;
+                display: inline-block;
+                margin-block-start: 1em;
+                padding: 1em 2em;
+                width: 30%;
+
+                transition: outline 100ms;
+
+                @media only screen and (max-width: 580px) {
+                    width: 100%;
+                }
+
+                svg {
+                    fill: #ccc;
+                }
+
+                p {
+                    margin: 0;
+                    font-size: 0.8em;
+                }
+            }
+        }
+        legend {
+            font-size: 1.3em;
+
+            &::after {
+                content: '*';
+                color: rgb(240, 99, 99);
+            }
+        }
+
+        label[for='policy'] {
+            &::after {
+                content: '*';
+                color: rgb(240, 99, 99);
+            }
+        }
+
+        a {
+            font-weight: 500;
+            font-style: italic;
+            color: rgb(41, 76, 174);
+
+            background-image: linear-gradient(90deg, rgba(38, 58, 130, 0.771), rgb(57, 70, 152));
+            background-size: 0% 2px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+
+            transition: background-size 200ms ease-in-out;
+
+            &:hover {
+                background-size: 100% 2px;
+            }
+        }
+    }
+
+    button[type='submit'] {
+        cursor: pointer;
+        color: white;
+        margin-inline: auto;
+        padding: 1em 1.8em;
+        width: fit-content;
+        border: none;
+        border-radius: 0.5em;
+        background-color: rgb(4, 191, 4);
+
+        &:hover {
+            background-color: rgb(28, 198, 28);
+        }
+    }
+</style>
