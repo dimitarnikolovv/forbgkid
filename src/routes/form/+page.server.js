@@ -65,8 +65,16 @@ export const actions = {
             data['tel'] = verifiedData.tel;
             data['email'] = verifiedData.email;
 
-            uploadData.append('files.work', formData.work, 'work');
-            uploadData.append('files.declaration', formData.declaration, 'declaration');
+            uploadData.append(
+                'files.work',
+                formData.work,
+                `work-${verifiedData.first_name}-${verifiedData.last_name}-${formData.work.name}`
+            );
+            uploadData.append(
+                'files.declaration',
+                formData.declaration,
+                `declaration-${verifiedData.first_name}-${verifiedData.last_name}-${formData.declaration.name}`
+            );
             uploadData.append('data', JSON.stringify(data));
 
             const response = await fetch(
