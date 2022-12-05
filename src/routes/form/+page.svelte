@@ -1,10 +1,40 @@
 <script>
     import { enhance } from '$app/forms';
+    import toast, { Toaster } from 'svelte-french-toast';
     import Main from '../../components/Main.svelte';
     import Section from '../../components/Section.svelte';
 
     /** @type {import('./$types').ActionData} */
     export let form;
+
+    function submitForm({ form, cancel }) {
+        return async ({ result, update }) => {
+            switch (result.type) {
+                case 'success':
+                    toast.success('Успешно изпратено. Благодарим :)');
+
+                    let svgs = form.querySelectorAll('fieldset#files svg');
+                    let pies = form.querySelectorAll('fieldset#files p');
+
+                    svgs.forEach((svg) => {
+                        svg.innerHTML = `<path
+                            d="M12.5 40q-4.3 0-7.4-3.1Q2 33.8 2 29.5q0-3.9 2.475-6.875t6.375-3.575q1-4.85 4.7-7.925T24.1 8.05q5.65 0 9.475 4.075Q37.4 16.2 37.4 21.9v1.2q3.6-.1 6.1 2.325Q46 27.85 46 31.55q0 3.45-2.5 5.95T37.55 40H25.5q-1.2 0-2.1-.9-.9-.9-.9-2.1V24.1l-4.15 4.15-2.15-2.15 7.8-7.8 7.8 7.8-2.15 2.15-4.15-4.15V37h12.05q2.25 0 3.85-1.6t1.6-3.85q0-2.25-1.6-3.85t-3.85-1.6H34.4v-4.2q0-4.45-3.025-7.65t-7.475-3.2q-4.45 0-7.5 3.2t-3.05 7.65h-.95q-3.1 0-5.25 2.175T5 29.45q0 3.1 2.2 5.325T12.5 37h7v3ZM24 25.5Z"
+                        />`;
+                    });
+
+                    pies.forEach((p) => {
+                        p.innerHTML = `Натиснете за да изберете файл или го привлачете в полето.`;
+                    });
+
+                    break;
+                default:
+                    toast.error('Нещо се обърка ;(');
+                    cancel();
+                    break;
+            }
+            await update();
+        };
+    }
 
     function displayFile(e) {
         const [file] = e.target.files;
@@ -12,71 +42,143 @@
         const fileSize = (size / 1000).toFixed(2);
 
         e.target.nextElementSibling.querySelector('p').innerHTML = `${fileName} - ${fileSize}KB`;
+        e.target.nextElementSibling.querySelector('svg').innerHTML = `<path
+                            class="ready"
+                            d="m20.6 34.05 11.5-11.5-2-2L20.65 30l-5-5-2.05 2.05ZM12.55 40q-4.4 0-7.475-3.075Q2 33.85 2 29.45q0-3.9 2.5-6.85 2.5-2.95 6.35-3.55 1-4.85 4.7-7.925T24.1 8.05q5.6 0 9.45 4.075Q37.4 16.2 37.4 21.9v1.2q3.6-.1 6.1 2.325Q46 27.85 46 31.55q0 3.45-2.5 5.95T37.55 40Zm0-3h25q2.25 0 3.85-1.6t1.6-3.85q0-2.25-1.6-3.85t-3.85-1.6H34.4v-4.2q0-4.55-3.05-7.7-3.05-3.15-7.45-3.15t-7.475 3.15q-3.075 3.15-3.075 7.7h-.95q-3.1 0-5.25 2.175T5 29.45q0 3.15 2.2 5.35Q9.4 37 12.55 37ZM24 24Z"
+                        />`;
     }
 </script>
 
+<Toaster />
+
 <Main>
     <Section>
-        <form method="POST" enctype="multipart/form-data" use:enhance>
+        <form method="POST" enctype="multipart/form-data" use:enhance={submitForm}>
             <fieldset id="names">
                 <legend>Информация за кандидата (Всички полета са задължителни)</legend>
                 <div class="block-wrapper">
                     Казвам се
-                    <label for="firstName" class="sr-only">Име</label>
-                    <input
-                        type="text"
-                        name="first_name"
-                        id="firstName"
-                        placeholder="Име"
-                        required
-                    />
+                    <div class="group">
+                        <label for="firstName" class="sr-only">Име</label>
 
-                    <label for="middleName" class="sr-only">Презиме</label>
-                    <input
-                        type="text"
-                        name="middle_name"
-                        id="middleName"
-                        placeholder="Презиме"
-                        required
-                    />
+                        <input
+                            type="text"
+                            name="first_name"
+                            id="firstName"
+                            placeholder="Име"
+                            required
+                        />
+                        {#if form?.errors?.first_name}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.first_name[0]}
+                            </label>
+                        {/if}
+                    </div>
 
-                    <label for="lastName" class="sr-only">Фамилия</label>
-                    <input
-                        type="text"
-                        name="last_name"
-                        id="lastName"
-                        placeholder="Фамилия"
-                        required
-                    />
+                    <div class="group">
+                        <label for="middleName" class="sr-only">Презиме</label>
+                        <input
+                            type="text"
+                            name="middle_name"
+                            id="middleName"
+                            placeholder="Презиме"
+                            required
+                        />
+                        {#if form?.errors?.middle_name}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.middle_name[0]}
+                            </label>
+                        {/if}
+                    </div>
+
+                    <div class="group">
+                        <label for="lastName" class="sr-only">Фамилия</label>
+                        <input
+                            type="text"
+                            name="last_name"
+                            id="lastName"
+                            placeholder="Фамилия"
+                            required
+                        />
+                        {#if form?.errors?.last_name}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.last_name[0]}
+                            </label>
+                        {/if}
+                    </div>
                     .
                 </div>
 
                 <div class="block-wrapper">
                     На
-                    <label for="age" class="sr-only">Възраст</label>
-                    <input type="number" name="age" id="age" placeholder="Години" required />
+                    <div class="group">
+                        <label for="age" class="sr-only">Възраст</label>
+                        <input
+                            type="number"
+                            name="age"
+                            min="1"
+                            max="99"
+                            id="age"
+                            placeholder="Години"
+                            required
+                        />
+                        {#if form?.errors?.age}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.age[0]}
+                            </label>
+                        {/if}
+                    </div>
                     години съм и уча в/ъв
-                    <label for="school" class="sr-only">Учебно заведение</label>
-                    <input
-                        type="text"
-                        name="school"
-                        id="school"
-                        placeholder="Учебно заведение"
-                        required
-                    />
+
+                    <div class="group">
+                        <label for="school" class="sr-only">Учебно заведение</label>
+                        <input
+                            type="text"
+                            name="school"
+                            id="school"
+                            placeholder="Учебно заведение"
+                            required
+                        />
+                        {#if form?.errors?.school}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.school[0]}
+                            </label>
+                        {/if}
+                    </div>
                     в град
-                    <label for="city" class="sr-only">Град</label>
-                    <input type="text" name="city" id="city" placeholder="Град" required />
+                    <div class="group">
+                        <label for="city" class="sr-only">Град</label>
+                        <input type="text" name="city" id="city" placeholder="Град" required />
+                        {#if form?.errors?.city}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.city[0]}
+                            </label>
+                        {/if}
+                    </div>
                     .
                 </div>
 
                 <div class="block-wrapper">
                     Може да ме потърсите на телефон
-                    <label for="tel" class="sr-only">Телефон</label>
-                    <input type="tel" name="tel" id="tel" placeholder="Телефон" required />
+                    <div class="group">
+                        <label for="tel" class="sr-only">Телефон</label>
+                        <input type="tel" name="tel" id="tel" placeholder="Телефон" required />
+                        {#if form?.errors?.tel}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.tel[0]}
+                            </label>
+                        {/if}
+                    </div>
                     или на имейл
-                    <label for="email" class="sr-only">Имейл</label>
-                    <input type="email" name="email" id="email" placeholder="Имейл" required />
+                    <div class="group">
+                        <label for="email" class="sr-only">Имейл</label>
+                        <input type="email" name="email" id="email" placeholder="Имейл" required />
+                        {#if form?.errors?.email}
+                            <label class="error-label" for="firstName">
+                                {form?.errors?.email[0]}
+                            </label>
+                        {/if}
+                    </div>
                     .
                 </div>
             </fieldset>
@@ -102,6 +204,7 @@
                             d="M12.5 40q-4.3 0-7.4-3.1Q2 33.8 2 29.5q0-3.9 2.475-6.875t6.375-3.575q1-4.85 4.7-7.925T24.1 8.05q5.65 0 9.475 4.075Q37.4 16.2 37.4 21.9v1.2q3.6-.1 6.1 2.325Q46 27.85 46 31.55q0 3.45-2.5 5.95T37.55 40H25.5q-1.2 0-2.1-.9-.9-.9-.9-2.1V24.1l-4.15 4.15-2.15-2.15 7.8-7.8 7.8 7.8-2.15 2.15-4.15-4.15V37h12.05q2.25 0 3.85-1.6t1.6-3.85q0-2.25-1.6-3.85t-3.85-1.6H34.4v-4.2q0-4.45-3.025-7.65t-7.475-3.2q-4.45 0-7.5 3.2t-3.05 7.65h-.95q-3.1 0-5.25 2.175T5 29.45q0 3.1 2.2 5.325T12.5 37h7v3ZM24 25.5Z"
                         />
                     </svg>
+
                     <p>Натиснете за да изберете файл или го привлачете в полето.</p>
                 </label>
 
@@ -134,6 +237,11 @@
                         политиката за използване на лични данни</a
                     >.</label
                 >
+                {#if form?.errors?.policy}
+                    <label class="error-label" for="firstName">
+                        {form?.errors?.policy[0]}
+                    </label>
+                {/if}
             </fieldset>
             <button type="submit">Изпрати</button>
         </form>
@@ -141,6 +249,9 @@
 </Main>
 
 <style lang="scss">
+    :global(form fieldset label svg .ready) {
+        fill: rgb(28, 198, 28);
+    }
     .sr-only {
         position: absolute;
         width: 1px;
@@ -171,6 +282,13 @@
         margin-block: 0.8em;
     }
 
+    .group {
+        display: inline-flex;
+        flex-direction: column;
+        position: relative;
+        margin-inline: 0.3em;
+    }
+
     input {
         position: relative;
         &[type='text'],
@@ -180,7 +298,6 @@
             display: inline;
             border: none;
             border-bottom: 1px solid black;
-            margin-inline: 0.3em;
         }
 
         &[type='number'] {
@@ -189,6 +306,10 @@
     }
 
     fieldset {
+        label.error-label {
+            color: rgb(240, 99, 99);
+            font-size: 0.6em;
+        }
         &#files {
             display: flex;
             flex-wrap: wrap;
