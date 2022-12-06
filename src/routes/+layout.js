@@ -9,6 +9,7 @@ export async function load({ fetch }) {
             start: 0,
             limit: 4,
         },
+        populate: 'media',
         sort: ['createdAt:desc'],
         fields: ['title', 'description', 'slug'],
     });

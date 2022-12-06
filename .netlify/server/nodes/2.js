@@ -1,32 +1,8 @@
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var stdin_exports = {};
-__export(stdin_exports, {
-  css: () => css,
-  entry: () => entry,
-  js: () => js,
-  module: () => module2
-});
-module.exports = __toCommonJS(stdin_exports);
-var module2 = __toESM(require("../entries/pages/index.svelte.js"));
-const entry = "pages/index.svelte-73cbc7ae.js";
-const js = ["pages/index.svelte-73cbc7ae.js", "chunks/index-4681b812.js", "chunks/Main-a9a8f0dc.js", "chunks/index-6a42aea5.js", "chunks/Section-181b1452.js"];
-const css = ["assets/pages/index.svelte-b232acea.css", "assets/Section-b930c67d.css"];
+import * as shared from '../entries/pages/about/_layout.js';
+
+export const index = 2;
+export const component = async () => (await import('../entries/pages/about/_layout.svelte.js')).default;
+export const file = '_app/immutable/components/pages/about/_layout.svelte-39de737f.js';
+export { shared };
+export const imports = ["_app/immutable/components/pages/about/_layout.svelte-39de737f.js","_app/immutable/chunks/index-d19a3ec2.js","_app/immutable/chunks/stores-094424ca.js","_app/immutable/chunks/singletons-65e2669a.js","_app/immutable/chunks/Section-2803bff0.js","_app/immutable/chunks/index-036b50d4.js","_app/immutable/chunks/Sidebar-54e80f54.js","_app/immutable/chunks/Button-354b56e2.js","_app/immutable/modules/pages/about/_layout.js-90b5182b.js","_app/immutable/chunks/index-cddf483e.js","_app/immutable/chunks/_layout-9eccfec5.js"];
+export const stylesheets = ["_app/immutable/assets/Section-63043a5f.css","_app/immutable/assets/Sidebar-1b4dad54.css","_app/immutable/assets/Button-a4b93b73.css"];

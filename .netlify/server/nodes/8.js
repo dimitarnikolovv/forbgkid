@@ -1,32 +1,7 @@
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var stdin_exports = {};
-__export(stdin_exports, {
-  css: () => css,
-  entry: () => entry,
-  js: () => js,
-  module: () => module2
-});
-module.exports = __toCommonJS(stdin_exports);
-var module2 = __toESM(require("../entries/pages/about/index.svelte.js"));
-const entry = "pages/about/index.svelte-9d55554c.js";
-const js = ["pages/about/index.svelte-9d55554c.js", "chunks/index-4681b812.js", "chunks/env-6d58f0dd.js"];
-const css = ["assets/pages/about/mission.svelte-c601903f.css"];
+
+
+export const index = 8;
+export const component = async () => (await import('../entries/pages/_page.svelte.js')).default;
+export const file = '_app/immutable/components/pages/_page.svelte-5e47fe4d.js';
+export const imports = ["_app/immutable/components/pages/_page.svelte-5e47fe4d.js","_app/immutable/chunks/index-d19a3ec2.js","_app/immutable/chunks/Section-2803bff0.js","_app/immutable/chunks/index-036b50d4.js","_app/immutable/chunks/MarkedData-9eb38f13.js","_app/immutable/chunks/marked.esm-4a6fc56a.js","_app/immutable/chunks/Button-354b56e2.js","_app/immutable/chunks/Sidebar-54e80f54.js"];
+export const stylesheets = ["_app/immutable/assets/_page-3a9f96d7.css","_app/immutable/assets/Section-63043a5f.css","_app/immutable/assets/MarkedData-a2b4e048.css","_app/immutable/assets/Button-a4b93b73.css","_app/immutable/assets/Sidebar-1b4dad54.css"];
