@@ -75,5 +75,8 @@
 
     :global(.wrapper .entry-wrap h1 a) {
         color: black;
+        background: none;
+        font-weight: normal;
+        font-style: normal;
     }
 </style>
