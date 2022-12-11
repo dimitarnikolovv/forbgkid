@@ -17,69 +17,62 @@
 </script>
 
 <nav>
+    <input type="checkbox" class="sr-only" id="check" checked={isChecked} on:click={doChecked} />
     <label class="nav-button" for="check">
-        <input type="checkbox" id="check" checked={isChecked} on:click={doChecked} />
         <span />
         <span />
         <span />
-
-        {#if isChecked === true}
-            <div class="nav-container" transition:slide>
-                <ul class="mobile-nav">
-                    <li>
-                        <a href="/" class:active={$page.url.pathname === '/'} on:click={doChecked}
-                            >Начало</a
-                        >
-                        <div class="arrow">
-                            <Arrow active={$page.url.pathname === '/'} directional={true} />
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/about" class:active={isActive('/about')} on:click={doChecked}
-                            >Как помагаме</a
-                        >
-                        <div class="arrow">
-                            <Arrow active={isActive('/about')} directional={true} />
-                        </div>
-                    </li>
-                    <li>
-                        <a
-                            href="/projects"
-                            class:active={isActive('/projects')}
-                            on:click={doChecked}>Проекти</a
-                        >
-                        <div class="arrow">
-                            <Arrow active={isActive('/projects')} directional={true} />
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/centre" class:active={isActive('/centre')} on:click={doChecked}
-                            >За центъра</a
-                        >
-                        <div class="arrow">
-                            <Arrow active={isActive('/centre')} directional={true} />
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/donate" class:active={isActive('/donate')} on:click={doChecked}
-                            >Дарение</a
-                        >
-                        <div class="arrow">
-                            <Arrow active={isActive('/donate')} directional={true} />
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/contact" class:active={isActive('/contact')} on:click={doChecked}
-                            >Контакти</a
-                        >
-                        <div class="arrow">
-                            <Arrow active={isActive('/contact')} directional={true} />
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        {/if}
     </label>
+    {#if isChecked === true}
+        <ul class="mobile-nav" transition:slide>
+            <li>
+                <a href="/" class:active={$page.url.pathname === '/'} on:click={doChecked}>Начало</a
+                >
+                <div class="arrow">
+                    <Arrow active={$page.url.pathname === '/'} directional={true} />
+                </div>
+            </li>
+            <li>
+                <a href="/about" class:active={isActive('/about')} on:click={doChecked}
+                    >Как помагаме</a
+                >
+                <div class="arrow">
+                    <Arrow active={isActive('/about')} directional={true} />
+                </div>
+            </li>
+            <li>
+                <a href="/projects" class:active={isActive('/projects')} on:click={doChecked}
+                    >Проекти</a
+                >
+                <div class="arrow">
+                    <Arrow active={isActive('/projects')} directional={true} />
+                </div>
+            </li>
+            <li>
+                <a href="/centre" class:active={isActive('/centre')} on:click={doChecked}
+                    >За центъра</a
+                >
+                <div class="arrow">
+                    <Arrow active={isActive('/centre')} directional={true} />
+                </div>
+            </li>
+            <li>
+                <a href="/donate" class:active={isActive('/donate')} on:click={doChecked}>Дарение</a
+                >
+                <div class="arrow">
+                    <Arrow active={isActive('/donate')} directional={true} />
+                </div>
+            </li>
+            <li>
+                <a href="/contact" class:active={isActive('/contact')} on:click={doChecked}
+                    >Контакти</a
+                >
+                <div class="arrow">
+                    <Arrow active={isActive('/contact')} directional={true} />
+                </div>
+            </li>
+        </ul>
+    {/if}
     <ul class="main-nav">
         <li>
             <a href="/" class:active={$page.url.pathname === '/'}>Начало</a>
@@ -122,9 +115,8 @@
 
 <style lang="scss">
     a.active {
-        color: white;
+        color: rgb(48, 110, 243);
     }
-
     ul {
         display: flex;
         gap: 1rem;
@@ -138,7 +130,7 @@
             justify-content: center;
             gap: 0.5rem;
             height: 2rem;
-            color: #aaa;
+            color: rgb(0, 0, 0);
 
             div {
                 transition: transform 200ms ease-in-out;
@@ -190,6 +182,28 @@
         }
     }
 
+    input[type='checkbox'] {
+        @media only screen and (min-width: 1220px) {
+            display: none;
+        }
+    }
+
+    input[type='checkbox']:checked + label span:nth-of-type(1) {
+        transform-origin: bottom;
+        transform: rotatez(45deg) translate(8px, 0px);
+    }
+
+    input[type='checkbox']:checked + label span:nth-of-type(2) {
+        transform-origin: top;
+        transform: rotatez(-45deg);
+    }
+
+    input[type='checkbox']:checked + label span:nth-of-type(3) {
+        transform-origin: bottom;
+        width: 50%;
+        transform: translate(19px, -7px) rotatez(45deg);
+    }
+
     label.nav-button {
         display: flex;
         flex-direction: column;
@@ -197,7 +211,7 @@
         cursor: pointer;
 
         span {
-            background: #fff;
+            background: rgb(0, 0, 0);
             border-radius: 10px;
             height: 3px;
             margin: 5px 0;
@@ -215,38 +229,24 @@
                 width: 75%;
             }
         }
-        input[type='checkbox'] {
+
+        @media only screen and (min-width: 1220px) {
             display: none;
         }
+    }
+    ul.mobile-nav {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        height: 80vh;
+        background-color: rgb(255, 255, 255, 0.85);
+        backdrop-filter: saturate(50%) blur(4px);
 
-        input[type='checkbox']:checked ~ span:nth-of-type(1) {
-            transform-origin: bottom;
-            transform: rotatez(45deg) translate(8px, 0px);
-        }
-
-        input[type='checkbox']:checked ~ span:nth-of-type(2) {
-            transform-origin: top;
-            transform: rotatez(-45deg);
-        }
-
-        input[type='checkbox']:checked ~ span:nth-of-type(3) {
-            transform-origin: bottom;
-            width: 50%;
-            transform: translate(19px, -7px) rotatez(45deg);
-        }
-        div.nav-container {
-            z-index: 10;
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            top: 100%;
-            left: 0;
-            width: 100vw;
-            height: 80vh;
-            background-color: rgba(0, 0, 0, 0.85);
-            transition: transform 200ms ease-in-out;
-        }
+        transition: transform 200ms ease-in-out;
 
         @media only screen and (min-width: 1220px) {
             display: none;

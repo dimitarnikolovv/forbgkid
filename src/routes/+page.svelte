@@ -26,14 +26,14 @@
                     button: { text: 'Още за Центъра', link: '/centre' },
                 }}
             />
-
-            <div class="entry-wrap">
+            <div>
                 <h1>Актуално</h1>
 
-                {#each data.postsPreview as entry}
-                    <Entry passedData={entry} targetEndpoint={'/news'} />
-                {/each}
-
+                <div class="entry-wrap">
+                    {#each data.postsPreview as entry}
+                        <Entry passedData={entry} targetEndpoint={'/news'} />
+                    {/each}
+                </div>
                 <Button params={{ text: 'Вижте всички', link: '/news' }} />
             </div>
         </div>
@@ -64,13 +64,13 @@
     .wrapper {
         display: flex;
         flex-direction: column;
+        gap: 4rem;
     }
 
     .entry-wrap {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
-        margin-block-start: 5rem;
+        gap: 4rem;
     }
 
     :global(.wrapper .entry-wrap h1 a) {

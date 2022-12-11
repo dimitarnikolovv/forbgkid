@@ -26,12 +26,12 @@
 
     svg {
         height: 3rem;
-        fill: white;
+        fill: black;
 
         transition: fill 200ms ease;
 
         &:hover {
-            fill: white;
+            fill: black;
             cursor: pointer;
         }
     }

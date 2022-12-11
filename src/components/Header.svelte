@@ -15,17 +15,16 @@
 
 <style lang="scss">
     header {
+        z-index: 10;
         position: fixed;
         top: 0;
-        z-index: 10;
         width: 100vw;
         min-height: 3rem;
         padding-block: 1rem;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(255, 255, 255, 0.7);
         backdrop-filter: saturate(50%) blur(4px);
 
         div.container {
-            z-index: 12;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -38,6 +37,7 @@
         }
     }
     header.fixed {
+        box-shadow: 0 3px 10px rgba(118, 118, 118, 0.1);
         .container {
             height: 3rem;
         }

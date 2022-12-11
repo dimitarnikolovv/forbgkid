@@ -4,7 +4,7 @@
 
     $: direction = directional && active ? 'left' : 'right';
 
-    $: clr = active ? 'white' : '#b2b2b2';
+    $: clr = active ? 'rgb(48, 110, 243)' : '#b2b2b2';
 </script>
 
 <svg

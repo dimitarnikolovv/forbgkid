@@ -64,7 +64,7 @@
 
 <style lang="scss">
     :global(.splide) {
-        background-color: black;
+        background-color: white;
     }
     .slide-title {
         height: fit-content;
@@ -74,7 +74,7 @@
         a {
             margin-inline: auto;
             font-size: large;
-            color: white;
+            color: black;
         }
     }
     .splide__arrow {
@@ -115,12 +115,12 @@
 
         &--left {
             left: 0;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
         }
 
         &--right {
             right: 0;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
         }
     }
 
