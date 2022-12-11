@@ -23,6 +23,7 @@
         padding-block: 1rem;
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: saturate(50%) blur(4px);
+        -webkit-backdrop-filter: saturate(50%) blur(4px);
 
         div.container {
             display: flex;

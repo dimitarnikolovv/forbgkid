@@ -126,6 +126,7 @@
 
     img,
     a {
+        max-width: 100vw;
         @media only screen and (max-width: 1000px) {
             width: 40rem;
         }
@@ -134,7 +135,7 @@
             width: 28rem;
         }
         @media only screen and (max-width: 450px) {
-            width: 20rem;
+            width: 90vw;
         }
     }
 </style>
