@@ -51,6 +51,7 @@
         img.fullscreen-image {
             max-width: 100%;
             max-height: unset;
+            height: unset;
             margin-block: 2rem;
             margin-inline: 1rem;
             float: none;
@@ -62,8 +63,9 @@
         float: right;
         max-width: 24vw;
         max-height: 35vh;
-        width: fit-content;
+        // width: fit-content;
         height: fit-content;
+        object-fit: cover;
         margin-block: 1rem;
         margin-inline-start: 1rem;
         border-radius: 10px;

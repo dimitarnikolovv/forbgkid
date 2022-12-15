@@ -32,6 +32,7 @@
         display: flex;
         align-items: center;
         gap: 1.8rem;
+        max-width: calc(100% - 70px);
         background-color: wheat;
         box-shadow: 10px 11px 20px 10px rgba(97, 97, 97, 0.15);
 

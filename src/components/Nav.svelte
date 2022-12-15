@@ -243,8 +243,9 @@
         left: 0;
         width: 100vw;
         height: 80vh;
-        background-color: rgb(255, 255, 255, 0.85);
+        background: rgba(255, 255, 255, 0.7);
         backdrop-filter: saturate(50%) blur(4px);
+        -webkit-backdrop-filter: saturate(50%) blur(4px);
 
         transition: transform 200ms ease-in-out;
 
