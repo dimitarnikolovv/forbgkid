@@ -1,5 +1,5 @@
 <script>
-    import Calendar from '../../../../components/Calendar.svelte';
+    import Calendar from '$lib/components/Calendar.svelte';
     export let data;
 </script>
 

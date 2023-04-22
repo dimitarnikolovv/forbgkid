@@ -1,6 +1,6 @@
 <script>
     import { marked } from 'marked';
-    import Button from '../components/Button.svelte';
+    import Button from '$lib/components/Button.svelte';
 
     export let markedData = {
         title: '',

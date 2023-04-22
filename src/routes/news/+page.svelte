@@ -1,8 +1,8 @@
 <script>
-    import Main from '../../components/Main.svelte';
-    import Section from '../../components/Section.svelte';
+    import Main from '$lib/components/Main.svelte';
+    import Section from '$lib/components/Section.svelte';
     import qs from 'qs';
-    import PaginationWrapper from '../../components/PaginationWrapper.svelte';
+    import PaginationWrapper from '$lib/components/PaginationWrapper.svelte';
 
     const querry = qs.stringify({
         fields: ['title', 'description', 'slug'],

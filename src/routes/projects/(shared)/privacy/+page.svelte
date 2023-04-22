@@ -1,5 +1,5 @@
 <script>
-    import MarkedData from '../../../../components/MarkedData.svelte';
+    import MarkedData from '$lib/components/MarkedData.svelte';
 
     export let data;
 </script>

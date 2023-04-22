@@ -1,8 +1,8 @@
 <script>
     import { enhance } from '$app/forms';
     import toast, { Toaster } from 'svelte-french-toast';
-    import Main from '../../components/Main.svelte';
-    import Section from '../../components/Section.svelte';
+    import Main from '$lib/components/Main.svelte';
+    import Section from '$lib/components/Section.svelte';
 
     /** @type {import('./$types').ActionData} */
     export let form;

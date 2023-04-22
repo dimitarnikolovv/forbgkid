@@ -1,8 +1,8 @@
 <script>
     import { page } from '$app/stores';
-    import Main from '../../../components/Main.svelte';
-    import Section from '../../../components/Section.svelte';
-    import Sidebar from '../../../components/Sidebar.svelte';
+    import Main from '$lib/components/Main.svelte';
+    import Section from '$lib/components/Section.svelte';
+    import Sidebar from '$lib/components/Sidebar.svelte';
 
     export let data;
 

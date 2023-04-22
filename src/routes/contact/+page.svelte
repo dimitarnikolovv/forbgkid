@@ -1,7 +1,7 @@
 <script>
-    import Main from '/src/components/Main.svelte';
-    import Section from '/src/components/Section.svelte';
-    import MarkedData from '../../components/MarkedData.svelte';
+    import Main from '$lib/components/Main.svelte';
+    import Section from '$lib/components/Section.svelte';
+    import MarkedData from '$lib/components/MarkedData.svelte';
 
     export let data;
 </script>

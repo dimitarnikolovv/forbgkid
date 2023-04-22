@@ -1,11 +1,11 @@
 <script>
-    import Main from '../components/Main.svelte';
-    import MarkedData from '../components/MarkedData.svelte';
-    import Carousel from '../components/Carousel.svelte';
-    import Section from '../components/Section.svelte';
-    import Sidebar from '../components/Sidebar.svelte';
-    import Entry from '../components/Entry.svelte';
-    import Button from '../components/Button.svelte';
+    import Main from '$lib/components/Main.svelte';
+    import MarkedData from '$lib/components/MarkedData.svelte';
+    import Carousel from '$lib/components/Carousel.svelte';
+    import Section from '$lib/components/Section.svelte';
+    import Sidebar from '$lib/components/Sidebar.svelte';
+    import Entry from '$lib/components/Entry.svelte';
+    import Button from '$lib/components/Button.svelte';
 
     export let data;
 </script>

@@ -1,6 +1,6 @@
 <script>
-    import Section from '../../components/Section.svelte';
-    import Main from '../../components/Main.svelte';
+    import Section from '$lib/components/Section.svelte';
+    import Main from '$lib/components/Main.svelte';
 </script>
 
 <Main>

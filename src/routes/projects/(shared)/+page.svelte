@@ -1,7 +1,7 @@
 <script>
     import qs from 'qs';
 
-    import PaginationWrapper from '../../../components/PaginationWrapper.svelte';
+    import PaginationWrapper from '$lib/components/PaginationWrapper.svelte';
 
     const querry = qs.stringify({
         fields: ['title', 'description'],

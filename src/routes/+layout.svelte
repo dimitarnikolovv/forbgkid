@@ -1,7 +1,7 @@
 <script>
-    import { scrollY } from '../stores';
-    import Header from '../components/Header.svelte';
-    import Footer from '../components/Footer.svelte';
+    import { scrollY } from '$lib/stores';
+    import Header from '$lib/components/Header.svelte';
+    import Footer from '$lib/components/Footer.svelte';
     import '../app.css';
 
     export let data;
